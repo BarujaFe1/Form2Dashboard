@@ -281,7 +281,7 @@ MIT — see [LICENSE](./LICENSE).
 ### Author
 
 **Felipe Baruja** — Product Engineer · Data & Automation
-[LinkedIn](https://www.linkedin.com/in/felipebaruja) · [GitHub](https://github.com/BarujaFe1)
+[LinkedIn](https://www.linkedin.com/in/barujafe) · [GitHub](https://github.com/BarujaFe1)
 
 ---
 
@@ -519,7 +519,7 @@ MIT — veja [LICENSE](./LICENSE).
 ### Autor
 
 **Felipe Baruja** — Product Engineer · Data & Automation
-[LinkedIn](https://www.linkedin.com/in/felipebaruja) · [GitHub](https://github.com/BarujaFe1)
+[LinkedIn](https://www.linkedin.com/in/barujafe) · [GitHub](https://github.com/BarujaFe1)
 
 ---
 
@@ -527,7 +527,4 @@ MIT — veja [LICENSE](./LICENSE).
 
 Obrigado às ferramentas open-source que tornam isso possível:
 [Next.js](https://nextjs.org/) · [shadcn/ui](https://ui.shadcn.com/) · [Recharts](https://recharts.org/) · [TanStack Table](https://tanstack.com/table) · [PapaParse](https://www.papaparse.com/) · [Zustand](https://github.com/pmndrs/zustand)
-```
 
-| **Estrutura de pastas** | Com comentários inline | Comentários alinhados e mais legíveis |
-| **Roadmap PT** | Não existia | Completo em português |

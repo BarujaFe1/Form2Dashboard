@@ -1,8 +1,4 @@
-Aqui está o README reescrito com seleção de idioma via âncoras HTML (padrão usado por projetos como Expo, Tamagui e outros grandes repos):
 
-***
-
-```markdown
 <div align="center">
   <img src="./public/og-image.png" alt="Form2Dashboard Banner" width="100%" style="border-radius: 12px;" />
 

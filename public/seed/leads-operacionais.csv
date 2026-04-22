@@ -1,0 +1,106 @@
+Carimbo de data/hora,Nome completo,Endereço de e-mail,Telefone,Empresa,Cargo,Como nos encontrou,Área de interesse,Mensagem,Status
+15/02/2026 09:12:33,Ana Clara Ribeiro,ana.ribeiro@techcorp.com.br,(11) 98765-4321,TechCorp Brasil,Gerente de Projetos,Google,Consultoria em dados,Gostaria de saber mais sobre os serviços de análise de dados.,qualificado
+15/02/2026 10:45:12,Carlos Eduardo Santos,carlos.santos@inovare.com,(21) 99876-5432,Inovare Soluções,Diretor Comercial,Indicação,Automação de processos,Preciso de uma proposta para automação do pipeline de vendas.,convertido
+16/02/2026 14:22:08,Mariana Costa Silva,mariana.costa@gmail.com,(31) 97654-3210,,Analista,Instagram,Dashboard operacional,Vi o post no Instagram e quero entender como funciona.,novo
+17/02/2026 08:30:00,Pedro Henrique Almeida,pedro.almeida@startupx.io,(11) 91234-5678,StartupX,CTO,LinkedIn,Integração de dados,Temos muitos dados em planilhas e precisamos organizar.,contatado
+18/02/2026 16:05:45,Juliana Ferreira,juliana.f@outlook.com,(85) 98888-7777,,Freelancer,Google,Relatórios,Quero gerar relatórios automáticos dos meus formulários.,novo
+19/02/2026 11:20:33,Rafael Oliveira,rafael.oliveira@empresa.com.br,(11) 95555-4444,DataDriven Ltda,Head de Analytics,Indicação,Analytics avançado,Estamos buscando parceiro para montar dashboards internos.,qualificado
+20/02/2026 09:00:15,Beatriz Mendes,bia.mendes@agencia360.com,(21) 94444-3333,Agência 360,Coordenadora de Marketing,Facebook,Marketing analytics,Precisamos visualizar melhor nossas campanhas.,contatado
+21/02/2026 13:45:22,Lucas Gabriel Costa,lucas.costa@freela.com,(11) 93333-2222,,Desenvolvedor,Google Ads,Desenvolvimento,Tenho interesse em integrar com APIs.,perdido
+22/02/2026 10:30:00,Fernanda Lima,fernanda.lima@consultoria.com,(41) 92222-1111,ConsultPro,Consultora Sênior,Email,Consultoria em dados,Recebi o e-mail e gostaria de agendar uma demonstração.,convertido
+23/02/2026 15:10:45,Gabriel Santos Neto,gabriel.neto@indtech.com,(11) 91111-0000,IndTech,Engenheiro de Dados,LinkedIn,Pipeline de dados,Quero modernizar nosso pipeline de dados operacionais.,qualificado
+25/02/2026 08:45:12,Camila Rodrigues,camila.rodrigues@escola.edu.br,(31) 98765-1234,Colégio Futuro,Coordenadora Pedagógica,Instagram,Educação,Podemos usar para acompanhar matrículas?,novo
+25/02/2026 11:33:20,Thiago Barbosa,thiago.barbosa@logistica.com.br,(21) 97654-2345,LogiMax,Gerente de Operações,Indicação,Logística,Temos formulários para controle de frota que precisam de dashboard.,contatado
+26/02/2026 14:00:00,Amanda Souza,amanda.souza@rh360.com,(11) 96543-3456,RH360,Analista de RH,Google,Recursos Humanos,Quero automatizar relatórios de pesquisa de clima.,qualificado
+27/02/2026 09:25:18,Vinícius Martins,vinicius.m@dev.io,(85) 95432-4567,,Dev Full Stack,Twitter,Desenvolvimento,Achei o projeto interessante e quero contribuir.,novo
+28/02/2026 16:40:30,Isabela Costa,isabela.c@marketing.com,(11) 94321-5678,MktPro,Social Media,Instagram,Marketing,Como posso conectar com Google Sheets?,novo
+01/03/2026 10:15:00,Rodrigo Nascimento,rodrigo.n@financeira.com.br,(21) 93210-6789,FinanceUp,Controller,Email,Finanças,Precisamos de dashboard para conciliação financeira.,contatado
+02/03/2026 08:00:45,Larissa Campos,larissa.campos@saude.org,(31) 92109-7890,Hospital São Lucas,Gestora de Qualidade,Indicação,Saúde,Queremos visualizar dados de satisfação do paciente.,qualificado
+03/03/2026 13:30:22,Diego Ferreira,diego.f@construcao.com.br,(41) 91098-8901,ConstruMax,Engenheiro Civil,Google,Construção,Dados de obra que precisam virar painel de acompanhamento.,novo
+04/03/2026 11:45:10,Priscila Alves,priscila.alves@varejo.com,(11) 90987-9012,VarejoPlus,Gerente de Loja,Facebook,Varejo,Tenho planilhas de vendas e quero gerar relatórios.,contatado
+05/03/2026 15:20:33,Matheus Lima,matheus.l@juridico.com.br,(21) 89876-0123,JurisTech,Advogado,LinkedIn,Jurídico,Precisamos organizar dados de processos jurídicos.,novo
+06/03/2026 09:50:18,Carolina Duarte,carolina.d@farmacia.com,(85) 88765-1234,FarmaVida,Farmacêutica,Google,Farmácia,Controle de estoque via formulário precisa de dashboard.,qualificado
+07/03/2026 14:10:00,Bruno Azevedo,bruno.azevedo@tech.io,(11) 87654-2345,ByteCode,Product Manager,LinkedIn,Produto,Quero usar para métricas de produto e feedback de usuários.,convertido
+08/03/2026 10:00:30,Aline Moreira,aline.m@educacao.org,(31) 86543-3456,EduTech Brasil,Professora,Instagram,Educação,Possível usar com turmas de alunos?,novo
+09/03/2026 16:25:45,Felipe Rocha,felipe.rocha@energia.com.br,(41) 85432-4567,EnergiaSmart,Analista,Indicação,Energia,Dashboard para monitoramento de consumo energético.,contatado
+10/03/2026 08:35:12,Natália Silveira,natalia.s@pesquisa.com,(11) 84321-5678,PesquisaBR,Pesquisadora,Email,Pesquisa,Preciso visualizar resultados de surveys de forma rápida.,qualificado
+11/03/2026 11:00:00,Gustavo Henrique,gustavo.h@agro.com.br,(21) 83210-6789,AgroTech,Engenheiro Agrônomo,Google,Agronegócio,Dados de campo que preciso transformar em painel.,novo
+12/03/2026 13:55:20,Letícia Araujo,leticia.a@design.com,(85) 82109-7890,DesignLab,UX Designer,Instagram,Design,Quero entender como funciona a parte visual do dashboard.,contatado
+13/03/2026 09:15:40,Ricardo Pinto,ricardo.pinto@imob.com.br,(11) 81098-8901,ImobTech,Corretor,Indicação,Imobiliário,Leads de imóveis que recebo por formulário.,convertido
+14/03/2026 15:40:55,Patrícia Gomes,patricia.g@contabil.com,(31) 80987-9012,ContábilPro,Contadora,Google,Contabilidade,Relatórios de clientes e prazos fiscais.,qualificado
+15/03/2026 10:20:30,André Barbosa,andre.b@telecom.com.br,(41) 79876-0123,TelecomBR,Gerente de Rede,LinkedIn,Telecomunicações,Dashboard para monitorar chamados técnicos.,novo
+16/03/2026 14:30:12,Daniela Fonseca,daniela.f@ong.org,(21) 78765-1234,ONG Futuro,Diretora Executiva,Email,Terceiro setor,Precisamos de painel para acompanhar doações e voluntários.,contatado
+17/03/2026 08:10:00,Leandro Teixeira,leandro.t@industria.com.br,(11) 77654-2345,IndusPro,Supervisor de Produção,Indicação,Indústria,Formulários de controle de qualidade precisam de visual.,qualificado
+18/03/2026 12:45:33,Simone Cardoso,simone.c@alimentacao.com,(85) 76543-3456,SaborBR,Chef de Cozinha,Instagram,Alimentação,Pesquisa de satisfação do restaurante.,novo
+19/03/2026 16:00:18,Marcos Vieira,marcos.v@transporte.com.br,(31) 75432-4567,TransLog,Coordenador,Google,Transporte,Controle de entregas e motoristas via formulário.,contatado
+20/03/2026 09:30:45,Raquel Monteiro,raquel.m@moda.com,(11) 74321-5678,ModaStyle,Compradora,Facebook,Moda,Pesquisa de tendência que quero analisar.,perdido
+21/03/2026 11:20:12,Henrique Dias,henrique.d@seguranca.com.br,(41) 73210-6789,SecureTech,Analista de Segurança,LinkedIn,Segurança,Relatórios de incidentes que vêm por formulário.,novo
+22/03/2026 14:55:00,Vanessa Nunes,vanessa.n@turismo.com,(21) 72109-7890,ViajeBR,Agente de Viagens,Instagram,Turismo,Formulário de interesse de pacotes precisa de dashboard.,contatado
+23/03/2026 08:40:30,Fábio Rezende,fabio.r@esportes.com.br,(11) 71098-8901,SportMax,Treinador,Google,Esportes,Dados de desempenho dos atletas em formulários.,qualificado
+24/03/2026 13:15:22,Cristiane Lopes,cristiane.l@beleza.com,(85) 70987-9012,BelezaPura,Esteticista,Indicação,Beleza,Pesquisa de satisfação pós-procedimento.,novo
+25/03/2026 15:50:18,Eduardo Machado,eduardo.m@consultoria.com.br,(31) 69876-0123,StrategyPro,Consultor,Email,Consultoria,Preciso apresentar dados limpos para clientes.,convertido
+26/03/2026 10:05:00,Tatiane Pereira,tatiane.p@saude.com,(11) 68765-1234,ClínicaBem,Enfermeira,Google,Saúde,Formulários de triagem que precisam virar relatório.,contatado
+27/03/2026 09:00:33,Adriano Costa,adriano.c@auto.com.br,(41) 67654-2345,AutoPeças,Vendedor,Facebook,Automotivo,Leads de orçamento que recebo pelo site.,novo
+28/03/2026 14:25:45,Monique Santos,monique.s@educacao.com,(21) 66543-3456,CursosOnline,Tutora,Instagram,Educação,Formulário de inscrição e acompanhamento de alunos.,qualificado
+29/03/2026 11:35:10,Roberto Cunha,roberto.c@governo.gov.br,(85) 65432-4567,Prefeitura Municipal,Servidor Público,Indicação,Governo,Dados de ouvidoria que precisam de painel.,contatado
+30/03/2026 16:15:55,Paula Oliveira,paula.o@ecommerce.com,(11) 64321-5678,ShopNow,Analista de E-commerce,LinkedIn,E-commerce,Dados de conversão que vêm de formulários.,convertido
+31/03/2026 08:50:20,Sérgio Lima,sergio.l@mineracao.com.br,(31) 63210-6789,MineralTech,Geólogo,Google,Mineração,Relatórios de campo em formulário.,novo
+01/04/2026 10:30:00,Débora Martins,debora.m@pet.com,(41) 62109-7890,PetLove,Veterinária,Instagram,Pet,Formulários de consulta e acompanhamento.,contatado
+02/04/2026 13:40:33,Alexandre Ramos,alexandre.r@logistica.com.br,(21) 61098-8901,ExpressLog,Gerente de Frota,Indicação,Logística,Dados de entrega que precisam de visualização.,qualificado
+03/04/2026 15:10:12,Eliane Souza,eliane.s@cultural.org,(11) 60987-9012,FundaçãoArte,Produtora Cultural,Email,Cultura,Inscrições de evento que precisam de relatório.,novo
+04/04/2026 09:20:45,Renato Gomes,renato.g@tech.com.br,(85) 59876-0123,TechNova,Desenvolvedor Sênior,LinkedIn,Tecnologia,Feedback de sprint em formulário precisa de dashboard.,contatado
+05/04/2026 14:00:18,Viviane Correia,viviane.c@imprensa.com,(31) 58765-1234,MídiaBR,Jornalista,Google,Mídia,Pesquisa de audiência que quero visualizar.,perdido
+06/04/2026 11:45:30,Jorge Nascimento,jorge.n@energia.com.br,(11) 57654-2345,SolarTech,Engenheiro Elétrico,Indicação,Energia,Dados de instalação solar em formulários.,qualificado
+07/04/2026 08:30:22,Marina Costa,marina.c@hotel.com,(41) 56543-3456,HotelPremium,Recepcionista,Instagram,Hotelaria,Feedback dos hóspedes precisa de painel.,novo
+08/04/2026 16:50:00,Cláudio Ferreira,claudio.f@advocacia.com.br,(21) 55432-4567,Ferreira Advogados,Sócio,Email,Jurídico,Dashboard de produtividade do escritório.,convertido
+09/04/2026 10:15:33,Luana Ribeiro,luana.r@rh.com,(85) 54321-5678,TalentHR,Recrutadora,LinkedIn,RH,Dados de processo seletivo em formulários.,contatado
+10/04/2026 13:25:45,Otávio Mendes,otavio.m@agro.com.br,(11) 53210-6789,FazendaVerde,Produtor Rural,Google,Agronegócio,Controle de safra via formulário.,novo
+11/04/2026 15:35:10,Bianca Almeida,bianca.a@moda.com.br,(31) 52109-7890,FashionBR,Estilista,Instagram,Moda,Pesquisa de preferência do consumidor.,qualificado
+12/04/2026 09:45:22,Wagner Silva,wagner.s@construcao.com.br,(41) 51098-8901,BuildMax,Mestre de Obras,Indicação,Construção,Relatórios diários de obra em formulário.,contatado
+13/04/2026 14:00:55,Elisa Duarte,elisa.d@farmacia.com.br,(21) 50987-9012,DrogaFácil,Farmacêutica,Google,Farmácia,Controle de receitas e dispensação.,novo
+14/04/2026 11:10:30,Márcio Teixeira,marcio.t@seguro.com,(11) 49876-0123,SeguraVida,Corretor de Seguros,Email,Seguros,Leads de cotação que preciso organizar.,convertido
+15/04/2026 08:20:18,Sandra Campos,sandra.c@educacao.org,(85) 48765-1234,FuturoEdu,Pedagoga,Indicação,Educação,Formulários de avaliação escolar.,qualificado
+16/04/2026 16:30:00,Paulo Roberto,paulo.r@industria.com.br,(31) 47654-2345,MetalTech,Técnico,LinkedIn,Indústria,Dados de manutenção preventiva.,contatado
+17/04/2026 10:40:33,Teresa Oliveira,teresa.o@saude.gov.br,(41) 46543-3456,UBS Central,Enfermeira Chefe,Google,Saúde,Dados de vacinação que precisam de painel.,novo
+18/04/2026 13:50:12,Daniel Araújo,daniel.a@fintech.com,(21) 45432-4567,PayFast,Product Owner,LinkedIn,Fintech,Feedback de beta testers em formulário.,qualificado
+19/04/2026 09:05:45,Adriana Barbosa,adriana.b@consultoria.com.br,(11) 44321-5678,BizConsult,Analista de Negócios,Indicação,Consultoria,Diagnóstico empresarial via formulários.,contatado
+20/04/2026 15:15:22,Rogério Pinto,rogerio.p@varejo.com,(85) 43210-6789,MegaShop,Gerente Regional,Google,Varejo,Pesquisas de satisfação das lojas.,convertido
+21/04/2026 11:25:00,Fernanda Lima,fernanda.lima@consultoria.com,(41) 42109-7890,ConsultPro,Consultora Sênior,Email,Consultoria em dados,Gostaria de renovar a demonstração com dados atualizados.,convertido
+21/04/2026 08:35:33,ana clara ribeiro,ANA.RIBEIRO@TECHCORP.COM.BR,(11) 98765-4321,TechCorp Brasil,Gerente de Projetos,google,Consultoria em dados,Envio duplicado por engano.,qualificado
+22/04/2026 14:45:12,Luciana Freitas,luciana.f@design.com.br,(21) 41098-8901,PixelArt,Diretora Criativa,Instagram,Design,Formulários de briefing que viram relatórios.,novo
+22/04/2026 10:55:45,Marcelo Souza,marcelo.s@transporte.com,(11) 40987-9012,RápidoLog,Motorista,Facebook,Transporte,Relatório de viagens.,perdido
+22/04/2026 13:05:18,Helena Martins,helena.m@cultural.org.br,(85) 39876-0123,CasaDaCultura,Curadora,Email,Cultura,Inscrições de exposição que preciso analisar.,contatado
+22/04/2026 16:15:30,Fábio Rezende,fabio.r@esportes.com.br,(11) 71098-8901,SportMax,Treinador,Google,Esportes,Atualizando minha solicitação anterior.,qualificado
+22/04/2026 09:25:00,,email_invalido_sem_arroba,,,,Google,,,novo
+22/04/2026 11:35:33,Teste Sem Email,,,,,,,,
+22/04/2026 14:45:12,Data Inválida,data.invalida@test.com,(11) 12345-6789,TestCo,Tester,Google,Teste,Linha com data inválida para testar validação.,novo
+abc/99/9999 08:00:00,Linha Com Data Ruim,data.ruim@test.com,(11) 00000-0000,TestCo,QA,LinkedIn,Teste,Esta linha deve ser descartada.,novo
+22/04/2026 15:55:45,José Carlos,jose.carlos@empresa_estranha,,,,,Interesse genérico,,quente
+22/04/2026 10:00:00,Maria da Silva,maria.silva@empresa.com.br,(21) 38765-1234,EmpresaBR,Assistente,busca orgânica,Geral,Quero conhecer o produto.,aberto
+22/04/2026 11:10:33,Roberto Santos,roberto.s@tech.io,(11) 37654-2345,DevShop,Frontend Dev,social,Tecnologia,Encontrei nas redes sociais.,em contato
+22/04/2026 13:20:12,Claudia Ferraz,claudia.f@escola.edu.br,(31) 36543-3456,Escola Nova,Professora,amigo,Educação,Um amigo indicou o produto.,novo
+22/04/2026 15:30:45,Antônio Lima,antonio.l@construcao.com,(41) 35432-4567,ObraCerta,Arquiteto,referencia,Construção,Vim por uma referência do mercado.,contatado
+22/04/2026 08:40:18,Carla Mendonça,carla.m@varejo.com.br,(85) 34321-5678,LojaTop,Compradora,newsletter,Varejo,Li sobre na newsletter e quero saber mais.,novo
+22/04/2026 10:50:00,Fabiana Reis,fabiana.r@saude.com,(21) 33210-6789,LabSaúde,Biomédica,mailing,Saúde,Recebi por e-mail marketing.,contatado
+22/04/2026 13:00:33,Leonardo Campos,leonardo.c@agro.com.br,(11) 32109-7890,AgroMax,Técnico Agrícola,Google Ads,Agronegócio,Vi o anúncio e cliquei.,novo
+22/04/2026 15:10:12,Raissa Oliveira,raissa.o@pet.com.br,(31) 31098-8901,PetCare,Veterinária,Facebook Ads,Pet,Anúncio no Facebook me trouxe aqui.,qualificado
+22/04/2026 09:20:45,Tiago Nascimento,tiago.n@fintech.com.br,(41) 30987-9012,CreditoJá,Analista de Risco,LinkedIn,Fintech,Quero dashboard para análise de risco.,contatado
+22/04/2026 11:30:18,Andreia Gomes,andreia.g@educacao.com.br,(85) 29876-0123,UniEduca,Coordenadora,Indicação,Educação,Uma colega indicou o produto.,qualificado
+22/04/2026 14:40:00,Reginaldo Costa,reginaldo.c@industria.com.br,(21) 28765-1234,SteelWorks,Supervisor,Google,Indústria,Controle de qualidade por formulário.,novo
+22/04/2026 16:50:33,Janaína Alves,janaina.a@beleza.com.br,(11) 27654-2345,GlamourBR,Cabeleireira,Instagram,Beleza,Pesquisa de satisfação do salão.,contatado
+22/04/2026 09:00:12,Nilton Ferreira,nilton.f@governo.gov.br,(31) 26543-3456,Secretaria de Saúde,Assessor,Email,Governo,Dados de atendimento público.,qualificado
+22/04/2026 11:10:45,Michele Pereira,michele.p@moda.com.br,(41) 25432-4567,TrendBR,Modelo,Instagram,Moda,Formulário de casting que precisa de análise.,novo
+22/04/2026 13:20:18,Evandro Martins,evandro.m@mineracao.com.br,(85) 24321-5678,GoldMine,Técnico de Segurança,Indicação,Mineração,Relatório de segurança do trabalho.,contatado
+22/04/2026 15:30:00,Débora Martins,debora.m@pet.com,(41) 62109-7890,PetLove,Veterinária,Instagram,Pet,Quero mais informações sobre planos.,contatado
+22/04/2026 08:40:33,Patrícia Lima,patricia.l@hotel.com.br,(21) 23210-6789,ResortBR,Gerente,Google,Hotelaria,Dashboard de ocupação por período.,qualificado
+22/04/2026 10:50:12,Edson Ribeiro,edson.r@transporte.com.br,(11) 22109-7890,FreteRápido,Logístico,LinkedIn,Logística,Controle de entregas e devoluções.,convertido
+22/04/2026 13:00:45,Cíntia Fonseca,cintia.f@cultural.org,(31) 21098-8901,InstitutoCultura,Coordenadora,Email,Cultura,Acompanhamento de oficinas culturais.,novo
+22/04/2026 15:10:18,Alan Santos,alan.s@esportes.com.br,(41) 20987-9012,AcademiaFit,Personal Trainer,Facebook,Esportes,Formulário de avaliação física dos alunos.,contatado
+22/04/2026 09:20:00,Solange Vieira,solange.v@alimentacao.com.br,(85) 19876-0123,RestauranteBR,Nutricionista,Google,Alimentação,Pesquisa de hábitos alimentares.,qualificado
+22/04/2026 11:30:33,Gilberto Machado,gilberto.m@seguranca.com.br,(21) 18765-1234,VigiTech,Gerente de Segurança,Indicação,Segurança,Relatórios de ronda e ocorrências.,convertido
+22/04/2026 14:40:12,Vera Lucia Santos,vera.l@farmacia.com.br,(11) 17654-2345,FarmaPopular,Atendente,Instagram,Farmácia,Controle de medicamentos controlados.,novo
+22/04/2026 16:50:45,Osvaldo Dias,osvaldo.d@auto.com.br,(31) 16543-3456,CarroNovo,Vendedor,Google,Automotivo,Leads de test drive por formulário.,contatado
+22/04/2026 09:00:18,Rita de Cássia,rita.c@juridico.com.br,(41) 15432-4567,JustiçaJá,Juíza,Email,Jurídico,Dados de processos e audiências.,qualificado
+22/04/2026 11:10:00,Nelson Carvalho,nelson.c@telecom.com.br,(85) 14321-5678,ConectaBR,Técnico,LinkedIn,Telecomunicações,Chamados de instalação e manutenção.,novo
+22/04/2026 13:20:33,Elaine Moreira,elaine.m@ecommerce.com.br,(21) 13210-6789,VendaOnline,Gerente de Operações,Google,E-commerce,Pedidos e reclamações por formulário.,contatado
+22/04/2026 15:30:12,Flávia Ramos,flavia.r@contabil.com.br,(11) 12109-7890,ContaFácil,Contadora,Indicação,Contabilidade,Documentos fiscais dos clientes.,convertido

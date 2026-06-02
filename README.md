@@ -1,142 +1,388 @@
-
 <div align="center">
-  <img src="./public/og-image.png" alt="Form2Dashboard Banner" width="100%" style="border-radius: 12px;" />
+  <img src="./icon.png" alt="Form2Dashboard Logo" width="120" height="120" />
 
   <h1>Form2Dashboard</h1>
-  <p><strong>Take ugly operational data. Get useful clarity in seconds.</strong></p>
+
+  <p><strong>Transforme CSVs operacionais bagunçados em clareza útil em segundos</strong></p>
+  <p><strong>Take ugly operational data and get useful clarity in seconds</strong></p>
 
   <p>
-    <a href="#english">
-      <img src="https://img.shields.io/badge/Read%20in-English-0D47A1?style=flat-square&logo=googletranslate&logoColor=white" alt="English" />
-    </a>
-    &nbsp;
-    <a href="#português">
-      <img src="https://img.shields.io/badge/Ler%20em-Português-009C3B?style=flat-square&logo=googletranslate&logoColor=white" alt="Português" />
-    </a>
+    <a href="#pt-br">PT-BR</a> •
+    <a href="#en">English</a> •
+    <a href="#tech-stack">Tech Stack</a> •
+    <a href="#quick-start--início-rápido">Quick Start</a> •
+    <a href="#data-pipeline--pipeline-de-dados">Pipeline</a> •
+    <a href="#autor--author">Autor</a>
   </p>
 
   <p>
-    <img src="https://img.shields.io/badge/build-passing-brightgreen?style=flat-square" alt="Build" />
-    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License" />
-    <img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js" alt="Next.js" />
-    <img src="https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square&logo=typescript" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/deployed_on-Vercel-black?style=flat-square&logo=vercel" alt="Vercel" />
+    <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Passing" />
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
+    <img src="https://img.shields.io/badge/Next.js-15-black.svg?logo=next.js&logoColor=white" alt="Next.js 15" />
+    <img src="https://img.shields.io/badge/TypeScript-strict-3178C6.svg?logo=typescript&logoColor=white" alt="TypeScript Strict" />
+    <img src="https://img.shields.io/badge/Tailwind-CSS-38BDF8.svg?logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/deployed%20on-Vercel-black.svg?logo=vercel&logoColor=white" alt="Vercel" />
+  </p>
+
+  <p>
+    <a href="https://form2dashboard.vercel.app"><strong>🌐 Live Demo</strong></a> •
+    <a href="https://github.com/BarujaFe1/Form2Dashboard"><strong>📦 Repository</strong></a> •
+    <a href="https://barujafe.vercel.app/"><strong>👤 Portfolio</strong></a>
   </p>
 </div>
 
 ---
 
+<a id="pt-br"></a>
+
+## 🇧🇷 PT-BR
+
+## 📊 Visão geral
+
+**Form2Dashboard** é um dashboard operacional premium, totalmente client-side, que transforma exportações CSV bagunçadas — como respostas brutas do Google Forms — em uma interface analítica limpa, estruturada e visualmente clara.
+
+Dados operacionais do mundo real raramente chegam prontos para análise. Eles costumam ter campos ausentes, e-mails inválidos, datas difíceis de interpretar, capitalização inconsistente, status fora do padrão e registros duplicados.
+
+O Form2Dashboard resolve esse atrito executando todo o pipeline de dados diretamente no navegador do usuário:
+
+- upload;
+- parsing;
+- mapeamento de colunas;
+- validação;
+- limpeza;
+- deduplicação;
+- agregação;
+- dashboard visual.
+
+> **Privacidade por design:** o CSV nunca sai da máquina do usuário. Todo o processamento acontece localmente no browser, sem servidor, sem banco de dados e sem configuração complexa.
+
+---
+
+## 🎯 Problema que resolve
+
+Muitas operações começam coletando dados em formulários simples, mas terminam com uma planilha difícil de interpretar. Antes de qualquer decisão, é preciso gastar tempo com tarefas repetitivas:
+
+- baixar o CSV;
+- abrir em planilha;
+- corrigir campos;
+- interpretar datas;
+- remover duplicados;
+- padronizar status;
+- montar gráficos;
+- calcular métricas;
+- explicar a qualidade dos dados.
+
+Esse processo é lento, manual e pouco apresentável.
+
+O **Form2Dashboard** transforma essa rotina em uma experiência guiada: o usuário envia o CSV, confirma o mapeamento e recebe um painel pronto para leitura.
+
+---
+
+## 💡 Proposta
+
+A proposta do projeto é oferecer um produto simples, elegante e útil para transformar dados operacionais ruins em clareza acionável.
+
+Diferente de ferramentas de BI genéricas, que exigem conexão com banco ou configuração de backend, o Form2Dashboard roda inteiramente no frontend. Diferente de templates administrativos comuns, ele possui lógica real de processamento de dados.
+
+O foco é ser:
+
+- rápido;
+- privado;
+- demonstrável;
+- visualmente premium;
+- fácil de usar;
+- tecnicamente sólido;
+- ideal para dados exportados de formulários.
+
+---
+
+## ✨ Funcionalidades principais
+
+### 📥 Ingestão de dados
+
+- Upload por drag and drop.
+- Validação visual do arquivo.
+- Suporte a CSV operacional.
+- Carregamento de demo com um clique.
+- Auto-detecção inteligente de colunas com nomes comuns, como:
+  - `Nome`
+  - `E-mail`
+  - `Carimbo de data/hora`
+  - `Status`
+  - `Origem`
+
+---
+
+### 🧭 Mapeamento de colunas
+
+- Interface para associar colunas do CSV aos campos do domínio.
+- Detecção automática com possibilidade de ajuste manual.
+- Campos obrigatórios destacados.
+- Experiência guiada antes de gerar o painel.
+
+---
+
+### 🧹 Validação e limpeza
+
+- Campos obrigatórios: `timestamp`, `name`, `email`.
+- Validação de formato de e-mail.
+- Parsing de datas em múltiplos formatos.
+- Normalização de strings, origens e status.
+- Deduplicação por e-mail.
+- Manutenção do registro mais recente em caso de duplicidade.
+- Relatório de linhas ignoradas e avisos de qualidade.
+
+---
+
+### 📊 KPIs operacionais
+
+| Métrica | Descrição |
+|---|---|
+| **Total de Leads** | Leads válidos e deduplicados |
+| **Convertidos** | Leads com status `convertido` |
+| **Taxa de Conversão** | Convertidos ÷ Total × 100% |
+| **Qualificados** | Leads com status `qualificado` ou `convertido` |
+| **Origens Ativas** | Canais de aquisição distintos no dataset |
+
+---
+
+### 📈 Visualizações
+
+- Leads ao longo do tempo.
+- Distribuição por origem.
+- Status do pipeline.
+- Gráficos responsivos com Recharts.
+- Escala temporal automática para leitura semanal ou mensal.
+
+---
+
+### 📋 Tabela interativa
+
+- Busca global por nome, e-mail e empresa.
+- Filtro por origem.
+- Filtro por status.
+- Colunas ordenáveis.
+- Paginação com 25 linhas por página.
+- Callout de qualidade com:
+  - percentual válido;
+  - duplicatas removidas;
+  - linhas ignoradas;
+  - avisos de normalização.
+
+---
+
+### ✨ Experiência de usuário
+
+- Dark/light mode com detecção automática do sistema.
+- Toggle manual de tema.
+- Skeleton loaders.
+- Estados de vazio, erro e carregamento.
+- Design responsivo de mobile até ultrawide.
+- Interface limpa, moderna e apresentável.
+
+---
+
+## 🖼️ Screenshots
+
+Adicione os arquivos em `public/screenshots/` para exibir as telas no README:
+
+```md
 <div align="center">
+  <img src="./public/screenshots/upload.png" alt="Upload Screen" width="800" />
+  <p><em>Clean drag-and-drop CSV upload interface</em></p>
 
-## Screenshots
+  <img src="./public/screenshots/mapper.png" alt="Column Mapper" width="800" />
+  <p><em>Intelligent auto-detection and column mapping</em></p>
 
-<img src="./public/screenshots/upload.png" alt="Upload Screen" width="800" style="border-radius: 8px; margin-bottom: 8px;" />
-<p><em>Clean, drag-and-drop CSV upload interface</em></p>
+  <img src="./public/screenshots/dashboard.png" alt="Dashboard Light Mode" width="800" />
+  <p><em>KPI cards, charts and filterable table</em></p>
 
-<br/>
-
-<img src="./public/screenshots/mapper.png" alt="Column Mapper" width="800" style="border-radius: 8px; margin-bottom: 8px;" />
-<p><em>Intelligent auto-detection and column mapping</em></p>
-
-<br/>
-
-<img src="./public/screenshots/dashboard.png" alt="Dashboard — Light Mode" width="800" style="border-radius: 8px; margin-bottom: 8px;" />
-<p><em>Full dashboard — KPI cards, charts, and filterable table</em></p>
-
-<br/>
-
-<img src="./public/screenshots/dark-mode.png" alt="Dashboard — Dark Mode" width="800" style="border-radius: 8px; margin-bottom: 8px;" />
-<p><em>First-class dark mode support</em></p>
-
+  <img src="./public/screenshots/dark-mode.png" alt="Dashboard Dark Mode" width="800" />
+  <p><em>First-class dark mode support</em></p>
 </div>
+```
 
 ---
 
-<h2 id="english">🇬🇧 English</h2>
+<a id="en"></a>
 
-### Overview
+## 🇺🇸 English
 
-**Form2Dashboard** is a premium, client-side operational dashboard that transforms messy CSV exports — such as raw Google Forms responses — into a clean, structured, and highly visual analytics interface.
+## 📊 Overview
 
-Real-world operational data is rarely clean. It contains duplicate entries, inconsistent casing, unparseable dates, and missing fields. Form2Dashboard bridges the gap between raw data collection and actionable insight by automatically mapping, validating, and cleaning your datasets before presenting them in a polished interface.
+**Form2Dashboard** is a premium, fully client-side operational dashboard that transforms messy CSV exports — such as raw Google Forms responses — into a clean, structured and highly visual analytics interface.
 
-Unlike generic BI tools that demand complex backend integrations, or simple admin templates that lack any data processing logic, Form2Dashboard handles the **entire pipeline inside the user's browser** — no server, no database, no configuration.
+Real-world operational data is rarely analysis-ready. It often contains missing fields, invalid emails, hard-to-parse dates, inconsistent casing, non-standard statuses and duplicate records.
 
-> 🔒 **Privacy by design:** Your CSV never leaves your machine. All parsing, validation, and aggregation runs locally in the browser.
+Form2Dashboard solves this friction by running the entire data pipeline directly in the user's browser:
 
-### Live Demo
+- upload;
+- parsing;
+- column mapping;
+- validation;
+- cleaning;
+- deduplication;
+- aggregation;
+- visual dashboard.
 
-🔗 **[form2dashboard.vercel.app](https://form2dashboard.vercel.app)**
-
-No data? No problem. Click **"Load Demo Data"** on the landing page to instantly populate the dashboard with a realistic 120-row seed dataset.
+> **Privacy by design:** the CSV never leaves the user's machine. All processing runs locally in the browser, with no server, no database and no complex configuration.
 
 ---
 
-### Features
+## 🎯 Problem solved
 
-#### 📥 Data Ingestion
-- **Drag & Drop Upload** — animated dropzone with file validation feedback
-- **Intelligent Auto-Detection** — guesses column mappings from common header names (`"Nome"`, `"E-mail"`, `"Carimbo de data/hora"`)
-- **One-Click Demo** — loads seed data instantly, no upload required
+Many operations start by collecting data through simple forms, but end up with a spreadsheet that is hard to interpret. Before making any decision, users often need to spend time on repetitive tasks:
 
-#### 🧹 Validation & Cleaning
-- **Required field enforcement** — `timestamp`, `name`, `email` are mandatory; invalid rows are counted and reported
-- **Email format validation** — regex-based with friendly per-row error messages
-- **Date parsing** — accepts ISO 8601, `DD/MM/YYYY`, and `MM/DD/YYYY`; unrecognizable formats generate errors
-- **Smart deduplication** — detects duplicate emails, keeps the most recent entry, reports count
-- **Graceful status normalization** — unknown status values are mapped to `"novo"` with a warning
+- downloading the CSV;
+- opening it in a spreadsheet;
+- fixing fields;
+- interpreting dates;
+- removing duplicates;
+- standardizing statuses;
+- building charts;
+- calculating metrics;
+- explaining data quality.
 
-#### 📊 KPI Metrics
+This workflow is slow, manual and not very presentable.
+
+**Form2Dashboard** turns this routine into a guided experience: the user uploads a CSV, confirms the mapping and receives a ready-to-read dashboard.
+
+---
+
+## 💡 Proposal
+
+The project offers a simple, elegant and useful product for turning bad operational data into actionable clarity.
+
+Unlike generic BI tools that require database connections or backend configuration, Form2Dashboard runs entirely in the frontend. Unlike common admin templates, it includes real data processing logic.
+
+The focus is to be:
+
+- fast;
+- private;
+- demonstrable;
+- visually premium;
+- easy to use;
+- technically solid;
+- ideal for form-exported data.
+
+---
+
+## ✨ Key features
+
+### 📥 Data ingestion
+
+- Drag-and-drop upload.
+- Visual file validation.
+- Support for operational CSV files.
+- One-click demo data loading.
+- Smart column auto-detection from common headers such as:
+  - `Nome`
+  - `E-mail`
+  - `Carimbo de data/hora`
+  - `Status`
+  - `Origem`
+
+---
+
+### 🧭 Column mapping
+
+- Interface to map CSV columns to domain fields.
+- Automatic detection with manual override.
+- Required fields highlighted.
+- Guided experience before generating the dashboard.
+
+---
+
+### 🧹 Validation and cleaning
+
+- Required fields: `timestamp`, `name`, `email`.
+- Email format validation.
+- Multi-format date parsing.
+- String, source and status normalization.
+- Email-based deduplication.
+- Keeps the most recent record when duplicates exist.
+- Report of skipped rows and quality warnings.
+
+---
+
+### 📊 Operational KPIs
+
 | Metric | Description |
 |---|---|
-| **Total Leads** | Valid, deduplicated lead count |
-| **Converted** | Leads with status `convertido` |
+| **Total Leads** | Valid, deduplicated leads |
+| **Converted** | Leads with `convertido` status |
 | **Conversion Rate** | Converted ÷ Total × 100% |
-| **Qualified** | Leads with status `qualificado` or `convertido` |
+| **Qualified** | Leads with `qualificado` or `convertido` status |
 | **Active Sources** | Distinct acquisition channels in the dataset |
 
-#### 📈 Visualizations
-- **Leads Over Time** — Area chart with weekly/monthly auto-scale
-- **Source Distribution** — Donut chart by acquisition channel
-- **Pipeline Status** — Horizontal bar chart across funnel stages
+---
 
-#### 📋 Interactive Table
-- Global search across name, email, and company
-- Multi-select filter by Source; single-select filter by Status
-- Sortable columns, paginated (25 rows/page)
-- Data Quality callout: valid %, duplicates removed, rows skipped
+### 📈 Visualizations
 
-#### ✨ UX Details
-- System-aware dark/light mode with manual toggle
-- Skeleton loaders on all data-dependent views
-- Designed empty, error, and loading states for every screen
-- Fully responsive from 375px mobile to ultrawide
+- Leads over time.
+- Source distribution.
+- Pipeline status.
+- Responsive charts with Recharts.
+- Automatic weekly/monthly temporal scale.
 
 ---
 
-### Data Flow
+### 📋 Interactive table
 
-```
-[ CSV Drop ] → [ PapaParse ] → [ Column Mapper ] → [ Validator ] → [ Cleaner ] → [ Aggregator ] → [ Dashboard ]
-```
-
-| Step | File | Responsibility |
-|---|---|---|
-| Parse | `lib/parser.ts` | CSV string → raw `Record<string, string>[]` |
-| Map | `components/mapping/` | User assigns CSV columns to domain fields |
-| Validate | `lib/validator.ts` | Required fields, email regex, date parsing, dedup |
-| Clean | `lib/cleaner.ts` | Normalize dates, strings, source aliases |
-| Aggregate | `lib/aggregator.ts` | KPIs, time series, category breakdowns |
-| Render | `components/dashboard/` | Recharts + TanStack Table |
+- Global search by name, email and company.
+- Source filter.
+- Status filter.
+- Sortable columns.
+- Pagination with 25 rows per page.
+- Data quality callout with:
+  - valid percentage;
+  - duplicates removed;
+  - skipped rows;
+  - normalization warnings.
 
 ---
 
-### Tech Stack
+### ✨ User experience
+
+- System-aware dark/light mode.
+- Manual theme toggle.
+- Skeleton loaders.
+- Empty, error and loading states.
+- Responsive design from mobile to ultrawide.
+- Clean, modern and presentation-ready interface.
+
+---
+
+## 🖼️ Screenshots
+
+Add files to `public/screenshots/` to display the screens in the README:
+
+```md
+<div align="center">
+  <img src="./public/screenshots/upload.png" alt="Upload Screen" width="800" />
+  <p><em>Clean drag-and-drop CSV upload interface</em></p>
+
+  <img src="./public/screenshots/mapper.png" alt="Column Mapper" width="800" />
+  <p><em>Intelligent auto-detection and column mapping</em></p>
+
+  <img src="./public/screenshots/dashboard.png" alt="Dashboard Light Mode" width="800" />
+  <p><em>KPI cards, charts and filterable table</em></p>
+
+  <img src="./public/screenshots/dark-mode.png" alt="Dashboard Dark Mode" width="800" />
+  <p><em>First-class dark mode support</em></p>
+</div>
+```
+
+---
+
+<a id="tech-stack"></a>
+
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 15 (App Router) |
-| Language | TypeScript (strict) |
+| Framework | Next.js 15 App Router |
+| Language | TypeScript strict |
 | Styling | Tailwind CSS + shadcn/ui |
 | State | Zustand |
 | Charts | Recharts |
@@ -148,41 +394,81 @@ No data? No problem. Click **"Load Demo Data"** on the landing page to instantly
 
 ---
 
-### Project Structure
+<a id="data-pipeline--pipeline-de-dados"></a>
 
+## 🔄 Data Pipeline / Pipeline de dados
+
+```txt
+[CSV Drop]
+   ↓
+[PapaParse]
+   ↓
+[Column Mapper]
+   ↓
+[Validator]
+   ↓
+[Cleaner]
+   ↓
+[Aggregator]
+   ↓
+[Dashboard]
 ```
+
+| Step | File | Responsibility |
+|---|---|---|
+| Parse | `lib/parser.ts` | CSV string → raw `Record<string, string>[]` |
+| Map | `components/mapping/` | User assigns CSV columns to domain fields |
+| Validate | `lib/validator.ts` | Required fields, email regex, date parsing and deduplication |
+| Clean | `lib/cleaner.ts` | Normalize dates, strings, sources and statuses |
+| Aggregate | `lib/aggregator.ts` | KPIs, time series and category breakdowns |
+| Render | `components/dashboard/` | Recharts + TanStack Table |
+
+---
+
+## 📁 Project Structure / Estrutura do projeto
+
+```txt
 form2dashboard/
-├── .github/workflows/ci.yml       # Lint + typecheck on every PR
+├── .github/workflows/ci.yml
 ├── public/
-│   ├── og-image.png               # Open Graph banner
-│   ├── screenshots/               # README assets
-│   └── seed/leads-operacionais.csv
+│   ├── og-image.png
+│   ├── screenshots/
+│   └── seed/
+│       └── leads-operacionais.csv
 ├── src/
-│   ├── app/                       # Next.js pages & layout
+│   ├── app/
 │   ├── components/
-│   │   ├── dashboard/             # KPI cards, charts, quality badge
-│   │   ├── layout/                # Header, sidebar, wrappers
-│   │   ├── mapping/               # Column mapper UI
-│   │   ├── table/                 # Data table + filters + pagination
-│   │   ├── ui/                    # shadcn/ui primitives
-│   │   └── upload/                # Drag & drop dropzone
-│   ├── config/                    # Labels, aliases, constants
-│   ├── lib/                       # Core processing pipeline
+│   │   ├── dashboard/
+│   │   ├── layout/
+│   │   ├── mapping/
+│   │   ├── table/
+│   │   ├── ui/
+│   │   └── upload/
+│   ├── config/
+│   ├── lib/
 │   │   ├── aggregator.ts
 │   │   ├── cleaner.ts
 │   │   ├── parser.ts
 │   │   ├── utils.ts
 │   │   └── validator.ts
-│   ├── store/app-store.ts         # Zustand store
-│   └── types/                     # Domain interfaces
+│   ├── store/
+│   │   └── app-store.ts
+│   └── types/
 └── README.md
 ```
 
 ---
 
-### Getting Started
+<a id="quick-start--início-rápido"></a>
 
-**Prerequisites:** Node.js 18+ · npm or pnpm
+## 🚀 Quick Start / Início rápido
+
+### Requirements / Pré-requisitos
+
+- Node.js 18+
+- npm or pnpm
+
+### Installation / Instalação
 
 ```bash
 git clone https://github.com/BarujaFe1/Form2Dashboard.git
@@ -191,31 +477,51 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open:
 
-**Using your own data**
-1. Export your Google Forms responses as CSV (Responses → Download CSV)
-2. Drop the file on the upload screen
-3. Map your columns to the required fields
-4. Your dashboard is ready
-
-**Using demo data:** Click **"Load Demo Data"** on the landing page. The seed file is also available at `public/seed/leads-operacionais.csv`.
+```txt
+http://localhost:3000
+```
 
 ---
 
-### Seed Dataset
+## 🌐 Live Demo / Demo ao vivo
 
-`leads-operacionais.csv` is engineered to stress-test every part of the pipeline:
+```txt
+https://form2dashboard.vercel.app
+```
 
-- **120 rows** of realistic Brazilian B2B lead data
-- **3 months** of timestamps (Jan–Mar 2025) for meaningful chart trends
-- **All 5 pipeline statuses** represented proportionally
-- **8 acquisition channels** for a rich source distribution
-- **Intentional anomalies:** 3 duplicate emails, 6 rows with invalid/missing data
+No data available? Use the built-in demo dataset.
+
+Sem dados próprios? Use o dataset de demonstração integrado.
 
 ---
 
-### Validation Rules
+## 🧪 Using your own data / Usando seus próprios dados
+
+1. Export Google Forms responses as CSV.
+2. Drop the file on the upload screen.
+3. Map columns to required fields.
+4. Review validation feedback.
+5. Open the generated dashboard.
+
+---
+
+## 🌱 Seed Dataset
+
+The seed dataset `leads-operacionais.csv` was designed to stress-test the entire pipeline:
+
+- 120 rows of realistic Brazilian B2B lead data.
+- 3 months of timestamps, from Jan to Mar 2025.
+- All 5 pipeline statuses represented.
+- 8 acquisition channels.
+- Intentional anomalies:
+  - 3 duplicate emails;
+  - 6 rows with invalid or missing data.
+
+---
+
+## ✅ Validation Rules / Regras de validação
 
 | Rule | Behavior | Message |
 |---|---|---|
@@ -223,308 +529,87 @@ Open [http://localhost:3000](http://localhost:3000).
 | Invalid email format | Row skipped | `Linha [X]: E-mail inválido: [value]` |
 | Unparseable date | Row skipped | `Linha [X]: Data inválida no campo timestamp` |
 | Duplicate email | Most recent kept | Warning in Data Quality card |
-| Unknown status value | Normalized to `"novo"` | Warning in Data Quality card |
+| Unknown status value | Normalized to `novo` | Warning in Data Quality card |
 | Empty CSV file | Upload blocked | `O arquivo CSV está vazio.` |
 
 ---
 
-### Data Schema
+## 🧬 Data Schema / Schema de dados
 
 ```typescript
 type LeadStatus = 'novo' | 'contatado' | 'qualificado' | 'perdido' | 'convertido'
 type LeadSource = 'orgânico' | 'pago' | 'indicação' | 'redes_sociais' | 'email' | 'outro'
 
 interface Lead {
-  id: string          // generated on parse
-  timestamp: Date     // required
-  name: string        // required
-  email: string       // required — deduplication key
+  id: string
+  timestamp: Date
+  name: string
+  email: string
   phone?: string
   company?: string
   role?: string
-  source: LeadSource  // defaults to 'outro' if unrecognized
+  source: LeadSource
   interest?: string
   message?: string
-  status: LeadStatus  // defaults to 'novo' if unrecognized
+  status: LeadStatus
 }
 ```
 
 ---
 
-### Roadmap
+## 🗺️ Roadmap
 
 | Version | Status | Scope |
 |---|---|---|
-| **V1.0** | ✅ Shipped | Upload · mapping · validation · cleaning · full dashboard |
-| **V1.1** | 🔜 Next | CSV export · advanced filters · improved auto-mapping |
-| **V2.0** | 💡 Planned | Google Sheets URL import · simple alert thresholds · second template |
+| V1.0 | Shipped | Upload, mapping, validation, cleaning and full dashboard |
+| V1.1 | Next | CSV export, advanced filters and improved auto-mapping |
+| V2.0 | Planned | Google Sheets URL import, simple alert thresholds and second template |
 
 ---
 
-### Contributing
+## 🤝 Contributing / Contribuição
 
 ```bash
 git checkout -b feature/your-feature
-git commit -m 'feat: describe your change'
+git commit -m "feat: describe your change"
 git push origin feature/your-feature
-# then open a Pull Request
 ```
 
----
-
-### License
-
-MIT — see [LICENSE](./LICENSE).
+Then open a Pull Request.
 
 ---
 
-### Author
+<a id="autor--author"></a>
 
-**Felipe Baruja** — Product Engineer · Data & Automation
-[LinkedIn](https://www.linkedin.com/in/barujafe) · [GitHub](https://github.com/BarujaFe1)
+## 👤 Autor / Author
 
----
+Developed by **Felipe Baruja** — Product Engineer · Data & Automation.
 
-<br/>
-<br/>
-
----
-
-<h2 id="português">🇧🇷 Português</h2>
-
-### Visão Geral
-
-**Form2Dashboard** é um painel operacional client-side que transforma exportações de CSV bagunçadas — como respostas brutas do Google Forms — em uma interface analítica limpa, estruturada e visualmente clara.
-
-Dados operacionais do mundo real raramente são organizados. Eles contêm registros duplicados, capitalização inconsistente, datas não reconhecíveis e campos ausentes. O Form2Dashboard preenche a lacuna entre a coleta de dados brutos e o insight acionável, mapeando, validando e limpando automaticamente seu dataset antes de apresentá-lo em uma interface polida.
-
-Diferente de ferramentas de BI genéricas que exigem integrações com backend complexo, ou de templates de admin que não têm nenhuma lógica de processamento, o Form2Dashboard executa **todo o pipeline no browser do usuário** — sem servidor, sem banco de dados, sem configuração.
-
-> 🔒 **Privacidade por design:** o seu CSV nunca sai do seu computador. Todo o parse, validação e agregação roda localmente no browser.
-
-### Demo ao vivo
-
-🔗 **[form2dashboard.vercel.app](https://form2dashboard.vercel.app)**
-
-Não tem dados? Sem problema. Clique em **"Carregar Dados de Demonstração"** na tela inicial para popular o painel instantaneamente com um seed dataset de 120 linhas realistas.
+- **Portfolio:** [https://barujafe.vercel.app/](https://barujafe.vercel.app/)
+- **GitHub:** [github.com/BarujaFe1](https://github.com/BarujaFe1)
+- **LinkedIn:** [linkedin.com/in/barujafe](https://www.linkedin.com/in/barujafe)
+- **Project:** [github.com/BarujaFe1/Form2Dashboard](https://github.com/BarujaFe1/Form2Dashboard)
 
 ---
 
-### Funcionalidades
+## 📄 License / Licença
 
-#### 📥 Ingestão de Dados
-- **Upload por Drag & Drop** — dropzone animada com feedback de validação do arquivo
-- **Detecção Automática Inteligente** — infere o mapeamento de colunas a partir de nomes de cabeçalho comuns (`"Nome"`, `"E-mail"`, `"Carimbo de data/hora"`)
-- **Demo com Um Clique** — carrega o seed data instantaneamente, sem necessidade de upload
+MIT License.
 
-#### 🧹 Validação e Limpeza
-- **Campos obrigatórios** — `timestamp`, `name`, `email` são obrigatórios; linhas inválidas são contadas e reportadas
-- **Validação de e-mail** — regex com mensagens de erro amigáveis por linha
-- **Parse de datas** — aceita ISO 8601, `DD/MM/AAAA` e `MM/DD/AAAA`; formatos não reconhecidos geram erro
-- **Deduplicação inteligente** — detecta e-mails duplicados, mantém o registro mais recente, reporta a contagem
-- **Normalização de status** — valores de status desconhecidos são mapeados para `"novo"` com aviso
-
-#### 📊 Métricas KPI
-| Métrica | Descrição |
-|---|---|
-| **Total de Leads** | Contagem válida e deduplicada |
-| **Convertidos** | Leads com status `convertido` |
-| **Taxa de Conversão** | Convertidos ÷ Total × 100% |
-| **Qualificados** | Leads com status `qualificado` ou `convertido` |
-| **Origens Ativas** | Canais de aquisição distintos no dataset |
-
-#### 📈 Visualizações
-- **Leads ao Longo do Tempo** — Area chart com escala semanal/mensal automática
-- **Distribuição por Origem** — Donut chart por canal de aquisição
-- **Status do Pipeline** — Gráfico de barras horizontais por estágio do funil
-
-#### 📋 Tabela Interativa
-- Busca global por nome, e-mail e empresa
-- Filtro multi-select por Origem; filtro single-select por Status
-- Colunas ordenáveis, paginação (25 linhas/página)
-- Callout de Qualidade de Dados: % válidos, duplicatas removidas, linhas ignoradas
-
-#### ✨ Detalhes de UX
-- Dark/light mode com detecção de preferência do sistema e toggle manual
-- Skeleton loaders em todas as views com dados
-- Estados de vazio, erro e carregamento para todas as telas
-- Responsivo de 375px (mobile) até monitores ultrawide
+See [LICENSE](./LICENSE) for details.
 
 ---
 
-### Fluxo de Dados
+## 🙏 Acknowledgments / Agradecimentos
 
-```
-[ Upload CSV ] → [ PapaParse ] → [ Mapeador de Colunas ] → [ Validador ] → [ Limpeza ] → [ Agregação ] → [ Painel ]
-```
+Built with open-source tools:
 
-| Etapa | Arquivo | Responsabilidade |
-|---|---|---|
-| Parse | `lib/parser.ts` | String CSV → `Record<string, string>[]` bruto |
-| Mapeamento | `components/mapping/` | Usuário associa colunas CSV aos campos do domínio |
-| Validação | `lib/validator.ts` | Campos obrigatórios, regex de e-mail, parse de data, dedup |
-| Limpeza | `lib/cleaner.ts` | Normaliza datas, strings, aliases de origem |
-| Agregação | `lib/aggregator.ts` | KPIs, séries temporais, breakdowns por categoria |
-| Renderização | `components/dashboard/` | Recharts + TanStack Table |
-
----
-
-### Stack Técnico
-
-| Camada | Tecnologia |
-|---|---|
-| Framework | Next.js 15 (App Router) |
-| Linguagem | TypeScript (strict) |
-| Estilização | Tailwind CSS + shadcn/ui |
-| Estado | Zustand |
-| Gráficos | Recharts |
-| Tabela | TanStack Table v8 |
-| Parse de CSV | PapaParse |
-| Ícones | Lucide React |
-| CI/CD | GitHub Actions |
-| Hospedagem | Vercel |
-
----
-
-### Estrutura do Projeto
-
-```
-form2dashboard/
-├── .github/workflows/ci.yml       # Lint + typecheck em todo PR
-├── public/
-│   ├── og-image.png               # Banner Open Graph
-│   ├── screenshots/               # Assets do README
-│   └── seed/leads-operacionais.csv
-├── src/
-│   ├── app/                       # Páginas e layout Next.js
-│   ├── components/
-│   │   ├── dashboard/             # Cards KPI, gráficos, badge de qualidade
-│   │   ├── layout/                # Header, sidebar, wrappers
-│   │   ├── mapping/               # UI do mapeador de colunas
-│   │   ├── table/                 # Tabela + filtros + paginação
-│   │   ├── ui/                    # Primitivos shadcn/ui
-│   │   └── upload/                # Dropzone drag & drop
-│   ├── config/                    # Labels, aliases, constantes
-│   ├── lib/                       # Pipeline central de processamento
-│   │   ├── aggregator.ts
-│   │   ├── cleaner.ts
-│   │   ├── parser.ts
-│   │   ├── utils.ts
-│   │   └── validator.ts
-│   ├── store/app-store.ts         # Zustand store
-│   └── types/                     # Interfaces do domínio
-└── README.md
-```
-
----
-
-### Como Começar
-
-**Pré-requisitos:** Node.js 18+ · npm ou pnpm
-
-```bash
-git clone https://github.com/BarujaFe1/Form2Dashboard.git
-cd Form2Dashboard
-npm install
-npm run dev
-```
-
-Abra [http://localhost:3000](http://localhost:3000).
-
-**Usando seus próprios dados**
-1. Exporte as respostas do seu Google Forms como CSV (Respostas → Baixar CSV)
-2. Arraste o arquivo para a tela de upload
-3. Mapeie suas colunas para os campos obrigatórios
-4. Seu painel está pronto
-
-**Usando dados de demonstração:** Clique em **"Carregar Dados de Demonstração"** na tela inicial. O arquivo seed também está disponível em `public/seed/leads-operacionais.csv`.
-
----
-
-### Seed Dataset
-
-`leads-operacionais.csv` foi projetado para testar cada parte do pipeline:
-
-- **120 linhas** de dados realistas de leads B2B brasileiros
-- **3 meses** de timestamps (Jan–Mar 2025) para tendências de gráfico significativas
-- **Todos os 5 status do pipeline** representados proporcionalmente
-- **8 canais de aquisição** para uma distribuição de origem rica
-- **Anomalias intencionais:** 3 e-mails duplicados, 6 linhas com dados inválidos/ausentes
-
----
-
-### Regras de Validação
-
-| Regra | Comportamento | Mensagem |
-|---|---|---|
-| Campo obrigatório vazio | Linha ignorada | `Linha [X]: Campo obrigatório ausente: [campo]` |
-| Formato de e-mail inválido | Linha ignorada | `Linha [X]: E-mail inválido: [valor]` |
-| Data não reconhecível | Linha ignorada | `Linha [X]: Data inválida no campo timestamp` |
-| E-mail duplicado | Mantém o mais recente | Aviso no card de Qualidade de Dados |
-| Status desconhecido | Normalizado para `"novo"` | Aviso no card de Qualidade de Dados |
-| CSV vazio | Upload bloqueado | `O arquivo CSV está vazio.` |
-
----
-
-### Schema de Dados
-
-```typescript
-type LeadStatus = 'novo' | 'contatado' | 'qualificado' | 'perdido' | 'convertido'
-type LeadSource = 'orgânico' | 'pago' | 'indicação' | 'redes_sociais' | 'email' | 'outro'
-
-interface Lead {
-  id: string          // gerado no parse
-  timestamp: Date     // obrigatório
-  name: string        // obrigatório
-  email: string       // obrigatório — chave de deduplicação
-  phone?: string
-  company?: string
-  role?: string
-  source: LeadSource  // default 'outro' se não reconhecido
-  interest?: string
-  message?: string
-  status: LeadStatus  // default 'novo' se não reconhecido
-}
-```
-
----
-
-### Roadmap
-
-| Versão | Status | Escopo |
-|---|---|---|
-| **V1.0** | ✅ Lançado | Upload · mapeamento · validação · limpeza · painel completo |
-| **V1.1** | 🔜 Próximo | Export CSV · filtros avançados · mapeamento automático melhorado |
-| **V2.0** | 💡 Planejado | Import via URL do Google Sheets · alertas simples · segundo template |
-
----
-
-### Contribuindo
-
-```bash
-git checkout -b feature/sua-feature
-git commit -m 'feat: descreva sua mudança'
-git push origin feature/sua-feature
-# depois abra um Pull Request
-```
-
----
-
-### Licença
-
-MIT — veja [LICENSE](./LICENSE).
-
----
-
-### Autor
-
-**Felipe Baruja** — Product Engineer · Data & Automation
-[LinkedIn](https://www.linkedin.com/in/barujafe) · [GitHub](https://github.com/BarujaFe1)
-
----
-
-### Agradecimentos
-
-Obrigado às ferramentas open-source que tornam isso possível:
 [Next.js](https://nextjs.org/) · [shadcn/ui](https://ui.shadcn.com/) · [Recharts](https://recharts.org/) · [TanStack Table](https://tanstack.com/table) · [PapaParse](https://www.papaparse.com/) · [Zustand](https://github.com/pmndrs/zustand)
 
+---
+
+<div align="center">
+  <p><strong>Form2Dashboard</strong></p>
+  <p>Operational CSVs in. Useful clarity out.</p>
+  <p><em>CSVs operacionais entram. Clareza útil sai.</em></p>
+</div>

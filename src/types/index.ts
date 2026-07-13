@@ -63,6 +63,55 @@ export interface DataQuality {
   warnings: string[]
 }
 
+// ─── Pipeline profiling & transform report ───
+
+export type PipelineStage = 'validate' | 'clean' | 'aggregate' | 'report'
+
+export interface StageTiming {
+  stage: PipelineStage
+  durationMs: number
+}
+
+export interface PipelineProfile {
+  totalMs: number
+  stages: StageTiming[]
+  inputRows: number
+  outputLeads: number
+  measuredAt: string
+}
+
+export interface ValueCount {
+  value: string
+  count: number
+}
+
+export interface TransformReport {
+  before: {
+    rawRows: number
+    distinctRawSources: number
+    distinctRawStatuses: number
+    topRawSources: ValueCount[]
+    topRawStatuses: ValueCount[]
+    issueCounts: {
+      email: number
+      timestamp: number
+      name: number
+      total: number
+    }
+  }
+  after: {
+    leads: number
+    invalidRows: number
+    duplicatesRemoved: number
+    warningsApplied: number
+    retentionRate: number
+    sources: ValueCount[]
+    statuses: ValueCount[]
+  }
+  transformations: string[]
+  profile: PipelineProfile
+}
+
 // ─── Dashboard Types ───
 
 export interface DashboardMetrics {

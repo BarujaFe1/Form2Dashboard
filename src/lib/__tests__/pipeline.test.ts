@@ -47,12 +47,19 @@ describe('mapper', () => {
 })
 
 describe('parseDate', () => {
-  it('parses BR datetime', () => {
-    const d = parseDate('15/02/2026 09:12:33')
+  it('parses BR datetime without US MM/DD ambiguity', () => {
+    const d = parseDate('12/03/2026 14:30:00')
     expect(d).not.toBeNull()
     expect(d!.getFullYear()).toBe(2026)
-    expect(d!.getMonth()).toBe(1)
-    expect(d!.getDate()).toBe(15)
+    expect(d!.getMonth()).toBe(2) // March
+    expect(d!.getDate()).toBe(12)
+  })
+
+  it('parses ISO dates', () => {
+    const d = parseDate('2026-03-12T14:30:00')
+    expect(d).not.toBeNull()
+    expect(d!.getMonth()).toBe(2)
+    expect(d!.getDate()).toBe(12)
   })
 
   it('returns null for garbage', () => {

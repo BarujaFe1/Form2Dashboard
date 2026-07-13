@@ -1,16 +1,17 @@
-# SUMMARY: Portfolio quality pass (2026-07-13)
+# SUMMARY — Form2Dashboard (2026-07-13)
 
 ## Status
-Form2Dashboard is demo-ready with hardened pipeline, CSV export, Vitest coverage, CI, and portfolio docs.
+Client-side lab/demo with auditable pipeline, transform report, before/after fixture, and benchmark evidence. Branch: `chore/portfolio-quality-pass`.
 
-## Delivered
-- Bugfix: qualified metric, duplicate counting, upload guards/a11y, seed fetch
-- Feature: export cleaned / filtered CSV
-- Quality: vitest, typecheck script, CI update, LICENSE, .env.example
-- Docs: AUDIT, ARCHITECTURE, TECHNICAL_DECISIONS, TESTING, DEPLOYMENT, HANDOFF, README rewrite
+## This pass
+- **P0 fix:** BR `DD/MM` dates no longer misparsed as US `MM/DD`
+- `runPipeline` + transform report UI + stage profiling
+- Fixture `messy-leads.csv` + regression tests
+- `npm run benchmark` → `docs/BENCHMARK_RESULTS.md`
+- Portfolio docs + supermegaprompt outside repo
 
-## Validation
-`npm run lint` · `npm run typecheck` · `npm run test` · `npm run build` — all green.
+## Gates
+`lint` · `typecheck` · `test` (14) · `benchmark` · `build` — green
 
-## Next increment
-Playwright happy-path + refresh screenshots with export button visible.
+## Caveat
+Public Vercel may still serve `main` until merge/redeploy.

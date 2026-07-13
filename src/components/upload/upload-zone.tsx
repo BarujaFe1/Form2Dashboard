@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useRef, useState } from 'react'
-import { Upload, FileSpreadsheet, Loader2 } from 'lucide-react'
+import { Upload, FileSpreadsheet, FileWarning, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAppStore } from '@/store/app-store'
 import { parseCSV, parseCSVString } from '@/lib/parser'
@@ -79,25 +79,28 @@ export function UploadZone() {
     fileInputRef.current?.click()
   }, [])
 
-  const handleSeedData = useCallback(async () => {
-    setError(null)
-    setWarning(null)
-    setIsLoading(true)
-    try {
-      const response = await fetch('/seed/leads-operacionais.csv')
-      if (!response.ok) {
-        setError('Erro ao carregar dados de exemplo.')
-        return
+  const loadPublicCsv = useCallback(
+    async (path: string, label: string) => {
+      setError(null)
+      setWarning(null)
+      setIsLoading(true)
+      try {
+        const response = await fetch(path)
+        if (!response.ok) {
+          setError(`Erro ao carregar ${label}.`)
+          return
+        }
+        const csvText = await response.text()
+        const result = parseCSVString(csvText)
+        applyParseResult(result.rows, result.headers, result.errors)
+      } catch {
+        setError(`Erro ao carregar ${label}.`)
+      } finally {
+        setIsLoading(false)
       }
-      const csvText = await response.text()
-      const result = parseCSVString(csvText)
-      applyParseResult(result.rows, result.headers, result.errors)
-    } catch {
-      setError('Erro ao carregar dados de exemplo.')
-    } finally {
-      setIsLoading(false)
-    }
-  }, [applyParseResult])
+    },
+    [applyParseResult]
+  )
 
   return (
     <div className="w-full space-y-3">
@@ -161,19 +164,32 @@ export function UploadZone() {
 
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-border" />
-        <span className="text-xs text-muted-foreground">ou</span>
+        <span className="text-xs text-muted-foreground">ou experimente</span>
         <div className="h-px flex-1 bg-border" />
       </div>
 
-      <Button
-        variant="outline"
-        className="w-full gap-2 text-sm h-10"
-        onClick={handleSeedData}
-        disabled={isLoading}
-      >
-        <FileSpreadsheet className="h-4 w-4" aria-hidden />
-        Carregar dados de exemplo
-      </Button>
+      <div className="grid gap-2 sm:grid-cols-2">
+        <Button
+          variant="outline"
+          className="w-full gap-2 text-sm h-10"
+          onClick={() => loadPublicCsv('/seed/leads-operacionais.csv', 'dados de exemplo')}
+          disabled={isLoading}
+        >
+          <FileSpreadsheet className="h-4 w-4" aria-hidden />
+          Dataset operacional
+        </Button>
+        <Button
+          variant="outline"
+          className="w-full gap-2 text-sm h-10"
+          onClick={() =>
+            loadPublicCsv('/fixtures/before-after/messy-leads.csv', 'CSV bagunçado')
+          }
+          disabled={isLoading}
+        >
+          <FileWarning className="h-4 w-4" aria-hidden />
+          CSV bagunçado (antes/depois)
+        </Button>
+      </div>
 
       {error && (
         <p className="text-center text-xs text-destructive" role="alert">

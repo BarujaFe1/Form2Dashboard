@@ -7,21 +7,22 @@ Form2Dashboard is a **static Next.js App Router** product. There is no backend A
 ```text
 Browser
   │
-  ├─ Upload / seed CSV
+  ├─ Upload / seed / messy fixture CSV
   │     └─ PapaParse (parser)
   │
   ├─ Column mapping UI
   │     └─ autoDetectMapping + manual override
   │
-  ├─ processData()
-  │     ├─ validateRows
-  │     ├─ cleanRows (normalize + dedupe)
-  │     └─ aggregateLeads
+  ├─ runPipeline()
+  │     ├─ validateRows          ─┐
+  │     ├─ cleanRows             ├─ stage timings (PipelineProfile)
+  │     ├─ aggregateLeads        │
+  │     └─ buildTransformReport  ─┘
   │
   └─ Dashboard UI
-        ├─ KPI cards
+        ├─ KPI cards (metric contracts)
         ├─ Recharts
-        ├─ Data quality
+        ├─ Data quality + transform report
         └─ TanStack Table + CSV export
 ```
 
@@ -31,7 +32,7 @@ Browser
 |---|---|---|
 | UI | `src/components/**` | Steps: upload → mapping → dashboard |
 | State | `src/store/app-store.ts` | Zustand orchestration of pipeline + filters |
-| Domain | `src/lib/*` | Pure functions: parse, map, validate, clean, aggregate, export |
+| Domain | `src/lib/*` | Pure functions: parse, map, validate, clean, aggregate, export, pipeline, transform-report |
 | Config | `src/config/constants.ts` | Aliases, labels, soft limits |
 | Types | `src/types/index.ts` | Shared domain contracts |
 
@@ -58,5 +59,11 @@ All processing stays in memory in the browser tab. Refreshing the page clears st
 
 - Max upload size: **5 MB** (`MAX_CSV_FILE_BYTES`)
 - Soft row warning: **10_000** rows (`MAX_CSV_ROWS_SOFT`)
+- Date policy: **BR Forms `DD/MM/YYYY` first**; unambiguous ISO `YYYY-MM-DD` supported; ambiguous US `MM/DD` slash dates are intentionally not supported
 
-These protect UX, not enforce a hard product quota.
+These protect UX and correctness, not a multi-tenant quota system.
+
+## Fixtures
+
+- Operational seed: `public/seed/leads-operacionais.csv`
+- Before/after demo: `public/fixtures/before-after/messy-leads.csv` + `expected-summary.json`

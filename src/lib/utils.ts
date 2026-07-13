@@ -7,51 +7,71 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Parse a date string in multiple common formats.
- * Returns a Date object or null if unparseable.
+ * Prefers explicit ISO (YYYY-MM-DD) and BR Forms dates (DD/MM/YYYY).
+ * Avoids `new Date('12/03/2026')` which engines treat as MM/DD and corrupt BR data.
  */
 export function parseDate(value: string): Date | null {
   if (!value || !value.trim()) return null
 
   const trimmed = value.trim()
 
-  // Try ISO format first
-  const isoDate = new Date(trimmed)
-  if (!isNaN(isoDate.getTime()) && trimmed.length > 6) {
-    return isoDate
+  // Explicit ISO-8601 / RFC-like: 2026-03-12 or 2026-03-12T14:30:00
+  const isoMatch = trimmed.match(
+    /^(\d{4})-(\d{2})-(\d{2})(?:[T\s](\d{2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})?)?$/
+  )
+  if (isoMatch) {
+    const [, year, month, day, hours, minutes, seconds] = isoMatch
+    const d = new Date(
+      parseInt(year, 10),
+      parseInt(month, 10) - 1,
+      parseInt(day, 10),
+      parseInt(hours || '0', 10),
+      parseInt(minutes || '0', 10),
+      parseInt(seconds || '0', 10)
+    )
+    if (!isNaN(d.getTime())) return d
   }
 
-  // Try DD/MM/YYYY HH:MM:SS or DD/MM/YYYY
+  // YYYY/MM/DD or YYYY.MM.DD
+  const ymdMatch = trimmed.match(
+    /^(\d{4})[/\.](\d{1,2})[/\.](\d{1,2})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/
+  )
+  if (ymdMatch) {
+    const [, year, month, day, hours, minutes, seconds] = ymdMatch
+    const d = new Date(
+      parseInt(year, 10),
+      parseInt(month, 10) - 1,
+      parseInt(day, 10),
+      parseInt(hours || '0', 10),
+      parseInt(minutes || '0', 10),
+      parseInt(seconds || '0', 10)
+    )
+    if (!isNaN(d.getTime())) return d
+  }
+
+  // BR / Google Forms default: DD/MM/YYYY [HH:MM:SS]
   const brDateTimeMatch = trimmed.match(
     /^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/
   )
   if (brDateTimeMatch) {
     const [, day, month, year, hours, minutes, seconds] = brDateTimeMatch
     const d = new Date(
-      parseInt(year),
-      parseInt(month) - 1,
-      parseInt(day),
-      parseInt(hours || '0'),
-      parseInt(minutes || '0'),
-      parseInt(seconds || '0')
+      parseInt(year, 10),
+      parseInt(month, 10) - 1,
+      parseInt(day, 10),
+      parseInt(hours || '0', 10),
+      parseInt(minutes || '0', 10),
+      parseInt(seconds || '0', 10)
     )
-    if (!isNaN(d.getTime())) return d
-  }
-
-  // Try MM/DD/YYYY
-  const usDateMatch = trimmed.match(
-    /^(\d{4})[/\-.](\d{1,2})[/\-.](\d{1,2})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/
-  )
-  if (usDateMatch) {
-    const [, year, month, day, hours, minutes, seconds] = usDateMatch
-    const d = new Date(
-      parseInt(year),
-      parseInt(month) - 1,
-      parseInt(day),
-      parseInt(hours || '0'),
-      parseInt(minutes || '0'),
-      parseInt(seconds || '0')
-    )
-    if (!isNaN(d.getTime())) return d
+    // Reject impossible calendar values (e.g. day 32 rolled over)
+    if (
+      !isNaN(d.getTime()) &&
+      d.getFullYear() === parseInt(year, 10) &&
+      d.getMonth() === parseInt(month, 10) - 1 &&
+      d.getDate() === parseInt(day, 10)
+    ) {
+      return d
+    }
   }
 
   return null

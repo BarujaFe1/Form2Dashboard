@@ -8,12 +8,14 @@ import { ChartLeadsOverTime } from './chart-leads-over-time'
 import { ChartSource } from './chart-source'
 import { ChartStatus } from './chart-status'
 import { DataQualityCard } from './data-quality-card'
+import { TransformReportCard } from './transform-report-card'
 import { LeadsTable } from '@/components/table/leads-table'
 import { downloadCSV, leadsToCSV } from '@/lib/export'
 
 export function DashboardView() {
   const aggregatedData = useAppStore((s) => s.aggregatedData)
   const dataQuality = useAppStore((s) => s.dataQuality)
+  const transformReport = useAppStore((s) => s.transformReport)
   const leads = useAppStore((s) => s.leads)
 
   if (!aggregatedData || !dataQuality) {
@@ -83,6 +85,8 @@ export function DashboardView() {
       )}
 
       <DataQualityCard quality={dataQuality} />
+
+      {transformReport && <TransformReportCard report={transformReport} />}
 
       {leads.length > 0 && <LeadsTable />}
     </div>

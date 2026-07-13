@@ -3,16 +3,15 @@
 
   <h1>Form2Dashboard</h1>
 
-  <p><strong>CSV operacional bagunçado → dashboard útil, no navegador, em segundos</strong></p>
-  <p><em>Upload messy form CSVs, clean columns, and generate interactive dashboards.</em></p>
+  <p><strong>CSV operacional bagunçado → limpeza medível → dashboard útil no navegador</strong></p>
+  <p><em>Upload messy form CSVs, clean columns with an auditable pipeline, and generate interactive dashboards.</em></p>
 
   <p>
-    <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build" />
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT" />
     <img src="https://img.shields.io/badge/Next.js-16-black.svg?logo=next.js&logoColor=white" alt="Next.js 16" />
     <img src="https://img.shields.io/badge/TypeScript-strict-3178C6.svg?logo=typescript&logoColor=white" alt="TypeScript" />
     <img src="https://img.shields.io/badge/tests-vitest-6E9F18.svg" alt="Vitest" />
-    <img src="https://img.shields.io/badge/deployed%20on-Vercel-black.svg?logo=vercel&logoColor=white" alt="Vercel" />
+    <img src="https://img.shields.io/badge/scope-client--side%20lab-lightgrey.svg" alt="Client-side lab" />
   </p>
 
   <p>
@@ -22,203 +21,149 @@
   </p>
 </div>
 
+> **Deploy note:** the Vercel URL tracks `main`. For the latest pipeline/report work on `chore/portfolio-quality-pass`, run locally (`npm run build && npm start`) until the branch is merged and redeployed.
+
 ---
 
 ## Screenshot
 
 <div align="center">
   <img src="./public/screenshots/dashboard.png" alt="Dashboard Form2Dashboard" width="800" />
-  <p><em>KPIs, charts, data quality and filterable leads table (light mode)</em></p>
+  <p><em>KPIs, charts, data quality (refresh screenshots after transform-report UI — see docs/SCREENSHOTS.md)</em></p>
 </div>
-
-<details>
-<summary>More screenshots</summary>
-
-<div align="center">
-  <img src="./public/screenshots/upload.png" alt="Upload" width="720" />
-  <p><em>Upload / demo seed</em></p>
-  <img src="./public/screenshots/mapper.png" alt="Mapper" width="720" />
-  <p><em>Column mapping with auto-detection</em></p>
-  <img src="./public/screenshots/dark-mode.png" alt="Dark mode" width="720" />
-  <p><em>Dark mode dashboard</em></p>
-</div>
-</details>
 
 ---
 
-## Problem
+## Problem & audience
 
-Operational teams collect leads in Google Forms (or similar) and end up with messy CSVs:
+**Who:** ops / growth / small data teams that collect leads via Google Forms (or similar) and live in messy CSVs.
 
-- inconsistent headers (`Carimbo de data/hora`, `Como nos encontrou`, …)
-- invalid emails and missing required fields
-- mixed date formats (BR `DD/MM/YYYY HH:mm:ss`)
-- free-text sources/statuses (`Instagram`, `won`, `quente`)
-- duplicate submissions by the same email
+**Pain:** before any KPI, someone manually fixes emails, BR dates, free-text channels/statuses, and duplicates — then rebuilds charts.
 
-Before any decision, someone spends hours cleaning spreadsheets and rebuilding charts.
+**Value:** a guided, privacy-first path from raw Forms export to cleaned leads, metric contracts, and export — with a before/after report you can defend in interview.
 
-## Solution
+---
 
-**Form2Dashboard** is a privacy-first, client-side data product:
+## Solution & flow
 
-1. Upload a CSV (or load demo data)
+1. Upload CSV **or** load **dataset operacional** / **CSV bagunçado (antes/depois)**
 2. Confirm auto-detected column mapping
-3. Run validation → cleaning → dedupe → aggregation
-4. Read KPIs, charts, quality report, and an interactive table
-5. Export the cleaned CSV back to disk
+3. Run `validate → clean/dedupe → aggregate` via `runPipeline`
+4. Read KPIs (with methodology hints), charts, quality + **transform report** (timings)
+5. Export cleaned CSV (full or filtered view)
 
-> The CSV never leaves the browser. No backend, no database, no account.
-
----
-
-## Main features
-
-- **Ingestion** — drag & drop CSV, 5 MB guard, soft warning above 10k rows, one-click demo seed
-- **Mapping** — alias-based auto-detection for common Forms headers + manual override
-- **Validation** — required timestamp/name/email, email format, parseable dates
-- **Cleaning** — name casing, source/status aliases, email dedupe (keep newest)
-- **Dashboard** — KPIs with methodology hints, time series, source/status charts
-- **Table** — search, source/status filters, sort, pagination (15/page)
-- **Export** — download cleaned leads or the current filtered table view
-- **UX** — light/dark theme, empty/error states, keyboard-accessible upload zone
-
----
-
-## Architecture
+> CSV stays in the browser tab. No backend, no database, no account.
 
 ```text
 CSV → PapaParse → mapping → validate → clean/dedupe → aggregate → UI + export
+                         └────────── profiling + transform report ──────────┘
 ```
-
-| Layer | Path |
-|---|---|
-| UI steps | `src/components/{upload,mapping,dashboard,table}` |
-| State | `src/store/app-store.ts` |
-| Domain | `src/lib/{parser,mapper,validator,cleaner,aggregator,export}` |
-| Config | `src/config/constants.ts` |
-
-Full detail: [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md)
-
----
-
-## Stack
-
-- **Next.js 16** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS 4** + **shadcn/ui**
-- **Zustand** (app state)
-- **PapaParse** (CSV)
-- **Recharts** (charts)
-- **TanStack Table** (table)
-- **Vitest** (unit tests)
-- **Vercel** (deploy)
-
----
-
-## Local demo
-
-Recommended recruiter path:
-
-1. `npm run dev`
-2. Open http://localhost:3000
-3. Click **Carregar dados de exemplo**
-4. Confirm mapping → **Gerar dashboard**
-5. Explore filters and **Exportar CSV limpo**
-
----
-
-## Commands
-
-```bash
-npm ci
-npm run dev          # development
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-npm start            # production server after build
-```
-
----
-
-## Environment variables
-
-None required for the default demo. See [`.env.example`](./.env.example).
-
-Optional: `NEXT_PUBLIC_SITE_URL` for site URL tooling.
-
----
-
-## Tests
-
-Pipeline unit tests cover parsing, mapping, validation, cleaning/dedupe, aggregation (qualified definition), and CSV escaping.
-
-```bash
-npm run test
-```
-
-See [`docs/TESTING.md`](./docs/TESTING.md).
-
----
-
-## Technical decisions
-
-- **Client-side only** to prove privacy + instant demo value
-- **Pure domain functions** so the pipeline is testable without mounting React
-- **Alias tables** instead of brittle exact header matching
-- **Deduplicate by email, keep newest** as an explicit operational policy
-
-Details and trade-offs: [`docs/TECHNICAL_DECISIONS.md`](./docs/TECHNICAL_DECISIONS.md)
-
----
-
-## Trade-offs
-
-| Choice | Upside | Cost |
-|---|---|---|
-| No backend | Privacy, zero ops, easy demo | Large files can freeze the tab |
-| Single-page steps | Simple mental model | No deep-linkable dashboard URL |
-| PT-BR UI | Matches BR Forms demos | English UI not first-class yet |
-| Soft limits only | Keeps demo frictionless | Not a multi-tenant SaaS quota system |
-
----
-
-## Roadmap
-
-- [x] V1.0 end-to-end client pipeline + dashboard
-- [x] V1.1 CSV export, tests, CI hardening, docs honesty
-- [ ] Web Worker for large CSVs
-- [ ] Playwright happy-path
-- [ ] Saved mapping presets (localStorage)
-- [ ] Optional EN UI toggle
-
----
-
-## Current status
-
-**Production-ready demo.** Install, lint, typecheck, tests, and build pass. Suitable for public portfolio and interview walkthroughs.
-
-Deploy notes: [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md)
 
 ---
 
 ## What this project demonstrates
 
-- Turning a real operational pain into a focused data product
-- Designing a **deterministic cleaning pipeline** (not just charts on raw CSV)
-- Separating **domain logic** from UI for testability
-- Privacy-aware architecture choices
-- Portfolio communication: problem → solution → proof → trade-offs
+- Designing an **auditable cleaning pipeline** (not charts on raw CSV)
+- Explicit **metric contracts** (e.g. Qualificados = `qualificado ∪ convertido`)
+- **BR date correctness** for Google Forms exports (regression-tested)
+- Separating domain (`src/lib`) from UI for Vitest coverage
+- Privacy-aware product constraints and honest soft limits (5 MB / 10k rows)
+- Interview-ready before/after fixture + benchmark evidence
 
 ---
 
-## How I would present this in an interview
+## Architecture
 
-1. **Problem** — “Teams drown in Forms CSVs before they can decide.”
-2. **Constraint** — “Demo must work with zero backend and keep PII local.”
-3. **Design** — show `validator` → `cleaner` → `aggregator` and the qualified metric contract.
-4. **Proof** — open live demo, load seed, export cleaned CSV; point to Vitest cases.
-5. **Honesty** — call out client-side limits and what I’d add next (Worker, E2E, presets).
+| Layer | Path |
+|---|---|
+| UI steps | `src/components/{upload,mapping,dashboard,table}` |
+| State | `src/store/app-store.ts` |
+| Pipeline | `src/lib/pipeline.ts` (+ parser, mapper, validator, cleaner, aggregator, transform-report, export) |
+| Fixtures | `public/fixtures/before-after/` |
+| Config | `src/config/constants.ts` |
+
+Docs: [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) · [`docs/TECHNICAL_DECISIONS.md`](./docs/TECHNICAL_DECISIONS.md)
+
+---
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind 4 · shadcn/ui · Zustand · PapaParse · Recharts · TanStack Table · Vitest · Vercel
+
+---
+
+## Quick start
+
+```bash
+npm ci
+npm run dev
+```
+
+Interview demo (3–5 min): [`docs/DEMO_WALKTHROUGH.md`](./docs/DEMO_WALKTHROUGH.md)
+
+1. Open http://localhost:3000  
+2. Click **CSV bagunçado (antes/depois)**  
+3. Generate dashboard → inspect **Relatório de transformação**  
+4. Export cleaned CSV  
+
+---
+
+## Commands & gates
+
+```bash
+npm run lint
+npm run typecheck
+npm run test          # unit + fixture (excludes long bench)
+npm run benchmark     # 100→10k rows → docs/BENCHMARK_RESULTS.md
+npm run build
+```
+
+CI: `.github/workflows/ci.yml` (lint, typecheck, test, build).
+
+---
+
+## Environment
+
+None required. See [`.env.example`](./.env.example).
+
+---
+
+## Decisions & trade-offs
+
+| Choice | Upside | Cost |
+|---|---|---|
+| Client-side only | Privacy, zero ops, instant demo | Large files can stress the main thread |
+| BR-first date parsing | Correct Forms exports | US `MM/DD` slash dates are not supported |
+| Soft limits | Honest UX | Not a warehouse-scale product |
+| PT-BR UI | Matches BR Forms demos | EN UI is secondary (README bilingual) |
+
+---
+
+## Performance evidence (Node microbench)
+
+See [`docs/BENCHMARK_RESULTS.md`](./docs/BENCHMARK_RESULTS.md). On the authoring machine (Node 22 / win32), **10,000 synthetic rows ~60 ms median** end-to-end in Vitest — relative evidence, not a browser FPS claim.
+
+---
+
+## Current status & limitations
+
+- **Status:** lab/demo ready for portfolio + interviews on this branch.
+- **Not claimed:** enterprise SaaS, multi-tenant auth, warehouse sync, or AI.
+- **Known gaps:** screenshots may lag UI; public Vercel may lag `main`; no Playwright yet; no Web Worker.
+
+Release notes: [`CHANGELOG.md`](./CHANGELOG.md)
+
+---
+
+## Interview talking points
+
+See [`docs/DEMO_WALKTHROUGH.md`](./docs/DEMO_WALKTHROUGH.md). Short version:
+
+1. Problem (Forms CSV friction) + privacy constraint  
+2. Show messy fixture → transform report → metric contracts  
+3. Mention P0 date bug found via fixture and fixed with regression  
+4. Show tests + benchmark doc  
+5. State limits and next step (Worker / E2E)
 
 ---
 
@@ -226,22 +171,20 @@ Deploy notes: [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md)
 
 | Doc | Purpose |
 |---|---|
-| [`docs/AUDIT_REPORT.md`](./docs/AUDIT_REPORT.md) | Quality audit |
-| [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | System design |
-| [`docs/TECHNICAL_DECISIONS.md`](./docs/TECHNICAL_DECISIONS.md) | ADRs / trade-offs |
-| [`docs/TESTING.md`](./docs/TESTING.md) | Test strategy |
-| [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md) | Vercel / local prod |
-| [`docs/HANDOFF.md`](./docs/HANDOFF.md) | Session handoff |
+| [`docs/PORTFOLIO_HANDOFF.md`](./docs/PORTFOLIO_HANDOFF.md) | Portfolio placement |
+| [`docs/AUDIT_REPORT.md`](./docs/AUDIT_REPORT.md) | Earlier audit |
+| [`docs/DEMO_WALKTHROUGH.md`](./docs/DEMO_WALKTHROUGH.md) | 3–5 min script |
+| [`docs/BENCHMARK_RESULTS.md`](./docs/BENCHMARK_RESULTS.md) | Timings |
+| [`docs/SCREENSHOTS.md`](./docs/SCREENSHOTS.md) | Capture guide |
+| [`CHANGELOG.md`](./CHANGELOG.md) | Release notes |
 
 ---
 
 ## Author
 
-**Felipe Alirio Baruja**  
-[Portfolio](https://barujafe.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/felipe-baruja/) · [GitHub](https://github.com/BarujaFe1)
-
----
+**Felipe Alírio Baruja** — software developer · Statistics / Data Science student (USP)  
+[Portfolio](https://barujafe.vercel.app/) · [GitHub](https://github.com/BarujaFe1)
 
 ## License
 
-MIT — see [`LICENSE`](./LICENSE).
+MIT — [`LICENSE`](./LICENSE)

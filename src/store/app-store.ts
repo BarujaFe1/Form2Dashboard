@@ -1,12 +1,10 @@
 import { create } from 'zustand'
 import type {
   AppStep, RawRow, ColumnMapping, ValidationResult,
-  Lead, DataQuality, AggregatedData,
+  Lead, DataQuality, AggregatedData, TransformReport, PipelineProfile,
 } from '@/types'
 import { autoDetectMapping } from '@/lib/mapper'
-import { validateRows } from '@/lib/validator'
-import { cleanRows } from '@/lib/cleaner'
-import { aggregateLeads } from '@/lib/aggregator'
+import { runPipeline } from '@/lib/pipeline'
 
 interface TableFilters {
   search: string
@@ -27,6 +25,8 @@ interface AppState {
   leads: Lead[]
   dataQuality: DataQuality | null
   aggregatedData: AggregatedData | null
+  transformReport: TransformReport | null
+  pipelineProfile: PipelineProfile | null
   tableFilters: TableFilters
   setTableFilters: (filters: Partial<TableFilters>) => void
   loadRawData: (rows: RawRow[], headers: string[], parseErrors: string[]) => void
@@ -52,6 +52,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   leads: [],
   dataQuality: null,
   aggregatedData: null,
+  transformReport: null,
+  pipelineProfile: null,
   tableFilters: initialFilters,
   setTableFilters: (filters) =>
     set((state) => ({ tableFilters: { ...state.tableFilters, ...filters } })),
@@ -61,31 +63,31 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({
       rawRows: rows, headers, parseErrors, columnMapping: mapping,
       step: 'mapping', validationResult: null, leads: [],
-      dataQuality: null, aggregatedData: null, tableFilters: initialFilters,
+      dataQuality: null, aggregatedData: null,
+      transformReport: null, pipelineProfile: null,
+      tableFilters: initialFilters,
     })
   },
 
   processData: () => {
     const { rawRows, columnMapping } = get()
-    const validationResult = validateRows(rawRows, columnMapping)
-    const cleaningResult = cleanRows(validationResult.validRows, columnMapping)
-    const aggregatedData = aggregateLeads(cleaningResult.leads)
-    const dataQuality: DataQuality = {
-      totalRawRows: rawRows.length,
-      validRows: validationResult.validRows.length,
-      invalidRows: validationResult.invalidRows.length,
-      duplicatesRemoved: cleaningResult.duplicatesRemoved,
-      warnings: cleaningResult.warningsApplied,
-    }
+    const result = runPipeline(rawRows, columnMapping)
     set({
-      validationResult, leads: cleaningResult.leads,
-      dataQuality, aggregatedData, step: 'dashboard',
+      validationResult: result.validationResult,
+      leads: result.cleaningResult.leads,
+      dataQuality: result.dataQuality,
+      aggregatedData: result.aggregatedData,
+      transformReport: result.transformReport,
+      pipelineProfile: result.profile,
+      step: 'dashboard',
     })
   },
 
   reset: () => set({
     step: 'upload', rawRows: [], headers: [], parseErrors: [],
     columnMapping: {}, validationResult: null, leads: [],
-    dataQuality: null, aggregatedData: null, tableFilters: initialFilters,
+    dataQuality: null, aggregatedData: null,
+    transformReport: null, pipelineProfile: null,
+    tableFilters: initialFilters,
   }),
 }))

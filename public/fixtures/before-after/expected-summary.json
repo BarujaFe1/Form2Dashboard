@@ -1,0 +1,25 @@
+{
+  "fixture": "messy-leads.csv",
+  "description": "Reproducible before/after fixture for Form2Dashboard pipeline demos and regression tests. Synthetic PII only.",
+  "rawRows": 12,
+  "expected": {
+    "validRows": 10,
+    "invalidRows": 2,
+    "duplicatesRemoved": 2,
+    "finalLeads": 8,
+    "convertedLeads": 3,
+    "qualifiedLeads": 5,
+    "notes": [
+      "Invalid: empty name + sem-email.com (no @)",
+      "Invalid: fabio@@quebrado (malformed email)",
+      "Ana Silva duplicate: keep newer Instagram/quente → redes_sociais/qualificado",
+      "Bruno Costa duplicate: keep newer Referral/convertido → indicação/convertido",
+      "Aliases: quente→qualificado, won/fechado→convertido, contacted→contatado, organic→orgânico, TikTok→redes_sociais, Facebook Ads→pago, newsletter/Email→email, xyz→outro"
+    ]
+  },
+  "metricDefinitions": {
+    "qualifiedLeads": "status in {qualificado, convertido}",
+    "convertedLeads": "status === convertido",
+    "dedupePolicy": "by lowercased email, keep latest timestamp"
+  }
+}

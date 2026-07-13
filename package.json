@@ -1,7 +1,7 @@
 {
   "name": "form2dashboard",
   "version": "1.0.0",
-  "description": "Premium client-side operational dashboard for CSV data.",
+  "description": "Client-side data product demo: clean messy form CSVs and generate interactive lead dashboards.",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,10 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "vitest run --exclude src/lib/__tests__/benchmark.test.ts",
+    "test:all": "vitest run",
+    "test:watch": "vitest",
+    "benchmark": "vitest run src/lib/__tests__/benchmark.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

@@ -17,6 +17,7 @@ export function cleanRows(
 ): CleaningResult {
   const warnings: string[] = []
   const leadsMap = new Map<string, Lead>()
+  let duplicatesRemoved = 0
 
   for (const row of rows) {
     const timestampStr = getMappedValue(row, mapping, 'timestamp') ?? ''
@@ -70,6 +71,7 @@ export function cleanRows(
     // Dedup by email: keep most recent
     const existing = leadsMap.get(email)
     if (existing) {
+      duplicatesRemoved += 1
       if (lead.timestamp > existing.timestamp) {
         leadsMap.set(email, lead)
       }
@@ -81,8 +83,6 @@ export function cleanRows(
   const leads = Array.from(leadsMap.values()).sort(
     (a, b) => b.timestamp.getTime() - a.timestamp.getTime()
   )
-
-  const duplicatesRemoved = rows.length - leads.length
 
   // Deduplicate warnings
   const uniqueWarnings = [...new Set(warnings)]

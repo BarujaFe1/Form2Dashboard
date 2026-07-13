@@ -27,7 +27,10 @@ export function aggregateLeads(leads: Lead[]): AggregatedData {
 function computeMetrics(leads: Lead[]): DashboardMetrics {
   const total = leads.length
   const converted = leads.filter((l) => l.status === 'convertido').length
-  const qualified = leads.filter((l) => l.status === 'qualificado').length
+  // Pipeline-qualified: actively in or past qualification (includes converts)
+  const qualified = leads.filter((l) =>
+    l.status === 'qualificado' || l.status === 'convertido'
+  ).length
   const contacted = leads.filter((l) =>
     ['contatado', 'qualificado', 'convertido'].includes(l.status)
   ).length

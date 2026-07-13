@@ -15,24 +15,29 @@ export function MetricsGrid({ metrics }: MetricsGridProps) {
         label="Total de leads"
         value={metrics.totalLeads}
         accent
+        hint="Após validação e deduplicação por e-mail"
       />
       <MetricCard
         label="Convertidos"
         value={metrics.convertedLeads}
         detail={`Taxa: ${formatPercent(metrics.conversionRate)}`}
+        hint="Status normalizado como convertido"
       />
       <MetricCard
         label="Qualificados"
         value={metrics.qualifiedLeads}
+        hint="Status qualificado ou convertido"
       />
       <MetricCard
         label="Taxa de contato"
         value={formatPercent(metrics.contactRate)}
+        hint="Contatado + qualificado + convertido"
       />
       <MetricCard
         label="Fontes ativas"
         value={metrics.activeSources}
         detail={`Principal: ${metrics.topSource}`}
+        hint="Canais distintos após normalização"
       />
     </div>
   )

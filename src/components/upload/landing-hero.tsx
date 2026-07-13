@@ -4,9 +4,13 @@ import { UploadZone } from './upload-zone'
 
 export function LandingHero() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center px-4 py-16 sm:py-24">
-      <div className="mx-auto max-w-lg text-center">
-        <div className="mb-6 inline-flex items-center rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-muted-foreground">
+    <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-4 py-16 sm:py-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--teal-soft)_0%,_transparent_55%)] opacity-80 dark:opacity-40"
+      />
+      <div className="relative mx-auto max-w-lg text-center">
+        <div className="mb-6 inline-flex items-center rounded-full border border-border bg-surface/90 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm">
           100% no navegador · sem backend · seus dados ficam com você
         </div>
 

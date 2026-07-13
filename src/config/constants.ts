@@ -1,5 +1,9 @@
 import type { LeadStatus, LeadSource, MappableField } from '@/types'
 
+/** Soft limits for client-side processing comfort. */
+export const MAX_CSV_FILE_BYTES = 5 * 1024 * 1024 // 5 MB
+export const MAX_CSV_ROWS_SOFT = 10_000
+
 // ─── Status ───
 
 export const LEAD_STATUSES: LeadStatus[] = [

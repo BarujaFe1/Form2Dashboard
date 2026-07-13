@@ -5,36 +5,64 @@ import { Upload, FileSpreadsheet, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAppStore } from '@/store/app-store'
 import { parseCSV, parseCSVString } from '@/lib/parser'
+import { MAX_CSV_FILE_BYTES, MAX_CSV_ROWS_SOFT } from '@/config/constants'
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
+}
 
 export function UploadZone() {
   const loadRawData = useAppStore((s) => s.loadRawData)
   const [isDragging, setIsDragging] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [warning, setWarning] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const applyParseResult = useCallback(
+    (rows: ReturnType<typeof parseCSVString>['rows'], headers: string[], errors: string[]) => {
+      if (rows.length === 0) {
+        setError('O arquivo CSV está vazio ou não pôde ser lido.')
+        return false
+      }
+      if (rows.length > MAX_CSV_ROWS_SOFT) {
+        setWarning(
+          `Arquivo grande (${rows.length.toLocaleString('pt-BR')} linhas). O processamento pode ficar lento neste navegador.`
+        )
+      } else {
+        setWarning(null)
+      }
+      loadRawData(rows, headers, errors)
+      return true
+    },
+    [loadRawData]
+  )
 
   const handleFile = useCallback(
     async (file: File) => {
-      if (!file.name.endsWith('.csv')) {
+      if (!file.name.toLowerCase().endsWith('.csv')) {
         setError('Por favor, selecione um arquivo CSV.')
+        return
+      }
+      if (file.size > MAX_CSV_FILE_BYTES) {
+        setError(
+          `Arquivo muito grande (${formatBytes(file.size)}). Limite: ${formatBytes(MAX_CSV_FILE_BYTES)}.`
+        )
         return
       }
       setError(null)
       setIsLoading(true)
       try {
         const result = await parseCSV(file)
-        if (result.rows.length === 0) {
-          setError('O arquivo CSV está vazio ou não pôde ser lido.')
-          return
-        }
-        loadRawData(result.rows, result.headers, result.errors)
+        applyParseResult(result.rows, result.headers, result.errors)
       } catch {
         setError('Erro ao processar o arquivo. Verifique o formato.')
       } finally {
         setIsLoading(false)
       }
     },
-    [loadRawData]
+    [applyParseResult]
   )
 
   const handleDrop = useCallback(
@@ -47,38 +75,54 @@ export function UploadZone() {
     [handleFile]
   )
 
+  const openFilePicker = useCallback(() => {
+    fileInputRef.current?.click()
+  }, [])
+
   const handleSeedData = useCallback(async () => {
     setError(null)
+    setWarning(null)
     setIsLoading(true)
     try {
       const response = await fetch('/seed/leads-operacionais.csv')
-      const csvText = await response.text()
-      const result = parseCSVString(csvText)
-      if (result.rows.length === 0) {
+      if (!response.ok) {
         setError('Erro ao carregar dados de exemplo.')
         return
       }
-      loadRawData(result.rows, result.headers, result.errors)
+      const csvText = await response.text()
+      const result = parseCSVString(csvText)
+      applyParseResult(result.rows, result.headers, result.errors)
     } catch {
       setError('Erro ao carregar dados de exemplo.')
     } finally {
       setIsLoading(false)
     }
-  }, [loadRawData])
+  }, [applyParseResult])
 
   return (
     <div className="w-full space-y-3">
       <div
+        role="button"
+        tabIndex={0}
+        aria-label="Enviar arquivo CSV"
+        aria-busy={isLoading}
         onDragOver={(e) => {
           e.preventDefault()
           setIsDragging(true)
         }}
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
-        onClick={() => fileInputRef.current?.click()}
+        onClick={openFilePicker}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            openFilePicker()
+          }
+        }}
         className={`
           group relative flex cursor-pointer flex-col items-center justify-center
           rounded-xl border-2 border-dashed px-6 py-10 transition-all duration-200
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
           ${
             isDragging
               ? 'border-primary bg-teal-soft'
@@ -89,26 +133,27 @@ export function UploadZone() {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".csv"
+          accept=".csv,text/csv"
           className="hidden"
           onChange={(e) => {
             const file = e.target.files?.[0]
             if (file) handleFile(file)
+            e.target.value = ''
           }}
         />
 
         {isLoading ? (
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" aria-hidden />
         ) : (
           <>
             <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-lg bg-muted group-hover:bg-primary/10 transition-colors">
-              <Upload className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              <Upload className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" aria-hidden />
             </div>
             <p className="text-sm font-medium text-foreground">
               Arraste seu CSV aqui ou clique para selecionar
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Suporta arquivos .csv exportados do Google Forms
+              Suporta arquivos .csv exportados do Google Forms · até {formatBytes(MAX_CSV_FILE_BYTES)}
             </p>
           </>
         )}
@@ -126,12 +171,19 @@ export function UploadZone() {
         onClick={handleSeedData}
         disabled={isLoading}
       >
-        <FileSpreadsheet className="h-4 w-4" />
+        <FileSpreadsheet className="h-4 w-4" aria-hidden />
         Carregar dados de exemplo
       </Button>
 
       {error && (
-        <p className="text-center text-xs text-destructive">{error}</p>
+        <p className="text-center text-xs text-destructive" role="alert">
+          {error}
+        </p>
+      )}
+      {warning && !error && (
+        <p className="text-center text-xs text-amber-600 dark:text-amber-400" role="status">
+          {warning}
+        </p>
       )}
     </div>
   )

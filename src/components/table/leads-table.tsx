@@ -6,13 +6,14 @@ import {
   getSortedRowModel, getPaginationRowModel,
   flexRender, type ColumnDef, type SortingState,
 } from '@tanstack/react-table'
-import { ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowUpDown, ChevronLeft, ChevronRight, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { StatusBadge } from './status-badge'
 import { TableFilters } from './table-filters'
 import { useAppStore } from '@/store/app-store'
 import { SOURCE_LABELS } from '@/config/constants'
 import { formatDate } from '@/lib/utils'
+import { downloadCSV, leadsToCSV } from '@/lib/export'
 import type { Lead } from '@/types'
 
 export function LeadsTable() {
@@ -105,16 +106,35 @@ export function LeadsTable() {
     initialState: { pagination: { pageSize: 15 } },
   })
 
+  const handleExportFiltered = () => {
+    if (filteredData.length === 0) return
+    const csv = leadsToCSV(filteredData)
+    const stamp = new Date().toISOString().slice(0, 10)
+    downloadCSV(csv, `leads-filtrados-${stamp}.csv`)
+  }
+
   return (
     <div className="rounded-xl border border-border bg-surface shadow-card">
       <div className="p-4 border-b border-border">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3 gap-2">
           <h3 className="text-sm font-medium text-foreground">
             Todos os leads
           </h3>
-          <span className="text-xs text-muted-foreground">
-            {filteredData.length} de {leads.length}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground">
+              {filteredData.length} de {leads.length}
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-8 gap-1.5 text-xs"
+              onClick={handleExportFiltered}
+              disabled={filteredData.length === 0}
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden />
+              <span className="hidden sm:inline">Exportar vista</span>
+            </Button>
+          </div>
         </div>
         <TableFilters />
       </div>
@@ -176,6 +196,7 @@ export function LeadsTable() {
               className="h-8 w-8"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
+              aria-label="Página anterior"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -185,6 +206,7 @@ export function LeadsTable() {
               className="h-8 w-8"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
+              aria-label="Próxima página"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
